@@ -41,8 +41,8 @@ all: ${NAME}
 	@echo "${GREEN}✅ Executable compiled !"
 
 # Compilation de l'exécutable
-${NAME}: ${LIBFT} ${OBJECTS}
-	${CC} ${CFLAGS} ${OBJECTS} -o ${NAME}
+${NAME}: ${OBJECTS}
+	${CC} ${CFLAGS} ${OBJECTS} -o ${NAME} ${LIBFT}
 
 # Règle pour compiler les fichiers objets dans le dossier objs
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | ${OBJ_DIR}
