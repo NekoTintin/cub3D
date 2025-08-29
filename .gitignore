@@ -8,3 +8,4 @@ LICENSE
 *.gch
 *.a
 *.pl
+.vscode

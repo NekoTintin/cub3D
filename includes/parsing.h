@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/08/29 18:09:50 by qupollet         ###   ########.fr       */
+/*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
+/*   Updated: 2025/08/29 18:17:49 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef PARSING_H
+# define PARSING_H
 
-# define RED "\033[31m"
-# define GREEN "\033[32m"
-# define YELLOW "\033[33m"
-# define END "\033[0m"
+typedef struct s_map
+{
+	int		width;
+	int		height;
+	char	**grid;
+}				t_map;
 
-# include "../libft/libft.h"
-# include "parsing.h"
-# include <fcntl.h>
+// parsing.c
+t_map		*ft_parsing(const char *file);
 
 // utils.c
-void	ft_print_warning(char *msg);
-void	ft_print_error(char *msg);
-void	free_tmap(t_map *map);
+int			get_map_start_line(char *file);
+int			get_map_size(char *file, t_map *map);
+int			allocate_map(t_map *map);
 
-#endif
+// verifs.c
+int			is_map_valid(t_map *map);
+int			is_cub_format(const char *filename);
+
+# endif
