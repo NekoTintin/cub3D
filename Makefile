@@ -6,22 +6,34 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/07/31 17:54:49 by qupollet         ###   ########.fr        #
+#    Updated: 2025/09/22 01:10:38 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
+# Project
 SRC_DIR = srcs
 OBJ_DIR = objs
-INCLUDE_DIR = include
+INCLUDE_DIR = includes
 
+# Libft
 LIBFT_DIR = libft
 LIBFT = ${LIBFT_DIR}/libft.a
-LIBS = -I/minilibx -Imlx_linux
+
+# MinilibX
+MLX_DIR = minilibx
+MLX = ${MLX_DIR}/libmlx.a
+# MinilibX flags + math
+MLX_FLAGS = -L${MLX_DIR} -lmlx -lXext -lX11 -lm
+
 DEBUG = -g3
 
-SRC =	cub3D.c \
+SRC =	parsing/backtracking.c \
+		parsing/parsing.c \
+		parsing/utils.c \
+		parsing/verif_utils.c \
+		cub3D.c \
 		utils.c \
 
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC}}
@@ -41,8 +53,8 @@ all: ${NAME}
 	@echo "${GREEN}✅ Executable compiled !"
 
 # Compilation de l'exécutable
-${NAME}: ${OBJECTS}
-	${CC} ${CFLAGS} ${OBJECTS} -o ${NAME} ${LIBFT}
+${NAME}: ${LIBFT} ${MLX} ${OBJECTS}
+	${CC} ${CFLAGS} ${OBJECTS} -o ${NAME} ${LIBFT} ${MLX_FLAGS}
 
 # Règle pour compiler les fichiers objets dans le dossier objs
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | ${OBJ_DIR}
@@ -61,9 +73,9 @@ ${LIBFT}:
 	@make -C ${LIBFT_DIR}
 
 # Règle pour la compilation de minilibx
-minilibx:
+${MLX}:
 	@echo "${YELLOW}📦 Compiling minilibx...${NC}"
-	@make -C minilibx
+	@make -C ${MLX_DIR}
 
 # Nettoyage des fichiers objets
 clean:
@@ -71,13 +83,15 @@ clean:
 	@rm -rf ${OBJ_DIR}
 	@echo "${RED}🧹 Cleaning libft...${NC}"
 	@make clean -C ${LIBFT_DIR}
+	@echo "${RED}🧹 Cleaning minilibx...${NC}"
+	@make clean -C ${MLX_DIR}
 
 # Nettoyage complet
 fclean: clean
-	@echo "${RED}🧹 Cleaning executable...${NC}"
+	@echo "${RED}🧹 Cleaning executable and objects...${NC}"
 	@rm -f ${NAME}
-	@rm -rf ${OBJ_DIR}
-	@make fclean -C ${LIBFT_DIR}
+	@rm -f ${LIBFT}
+	@rm -f ${MLX}
 
 # Rebuild complet
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/08/29 18:09:50 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/21 22:12:50 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 // utils.c
 void	ft_print_warning(char *msg);
 void	ft_print_error(char *msg);
+void	free_tab(char **tab);
 void	free_tmap(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2025/08/29 18:14:05 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/22 00:38:38 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	get_map_start_line(char *file)
 	return (-1);
 }
 
-static void buffer_iterator(int fd, int size)
+void	buffer_iterator(int fd, int size)
 {
 	char	*buf;
 	int		idx;
@@ -107,7 +107,7 @@ int	get_map_size(char *file, t_map *map)
 	return (0);
 }
 
-int allocate_map(t_map *map)
+int	allocate_map(t_map *map)
 {
 	int		idx;
 

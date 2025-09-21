@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/21 10:29:40 by qupollet          #+#    #+#              #
-#    Updated: 2025/07/31 17:49:32 by qupollet         ###   ########.fr        #
+#    Updated: 2025/09/22 01:03:28 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ ${NAME}: ${OBJECTS}
 # Règle pour compiler les fichiers objets dans le dossier objs
 ${OBJ_DIR}/%.o: %.c | ${OBJ_DIR}
 	@echo "${BLUE}━  🛠️  Compiling $< into $@...${NC}"
-	@${CC} ${CFLAGS} -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 
 # Création du répertoire objs si non existant
 ${OBJ_DIR}:

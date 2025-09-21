@@ -6,27 +6,57 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2025/08/29 18:17:11 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/22 00:47:48 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
-t_map	*ft_parsing(const char *file)
+static int	is_map_valid(t_map *map)
 {
-	t_map		*map;
+	char		**copy;
 
-	map = create_tmap();
-	if (!map)
-		return (NULL);
-	if (get_map_size(file, map) == -1)
-		return (free_tmap(map), NULL);
-	if (allocate_map(map) == -1)
-		return (free_tmap(map), NULL);
-	
+	if (map_iter(map, check_valid_char) == -1)
+		return (-1);
+	map_iter(map, replace_space);
+	if (count_start_char(map) != 1)
+		return (-1);
+	if (map_iter(map, is_start_pos) == 1)
+		return (-1);
+	copy = create_copy(map);
+	if (!copy)
+		return (-1);
+	if (backtracking(map, map->start->x, map->start->y, copy) == -1)
+	{
+		ft_print_error("Map is not closed");
+		free_tab(copy);
+		return (-1);
+	}
+	free_tab(copy);
+	return (0);
 }
 
-t_map	*create_tmap(void)
+// Check if the file has a .cub extension
+static int	is_cub_format(char *filename)
+{
+	char		*ext;
+	int			size;
+	int			fd;
+
+	size = ft_strlen(filename);
+	if (size < 4)
+		return (ft_print_error("Filename too short to be a .cub file"), 0);
+	ext = filename + size - 4;
+	if (ft_strncmp(ext, ".cub", 4) != 0)
+		return (ft_print_error("File is not a .cub file"), 0);
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (ft_print_error("Failed to open file"), 0);
+	close(fd);
+	return (1);
+}
+
+static t_map	*create_tmap(void)
 {
 	t_map		*map;
 
@@ -36,20 +66,51 @@ t_map	*create_tmap(void)
 	map->width = 0;
 	map->height = 0;
 	map->grid = NULL;
+	map->start = ft_calloc(1, sizeof(t_position));
+	if (!map->start)
+		return (free(map), NULL);
 	return (map);
 }
 
-int	read_map(t_map *map, const char *file)
+static int	read_map(t_map *map, char *file)
 {
 	int		fd;
-	int		i;
 	char	*line;
+	int		idx;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (-1);
 	buffer_iterator(fd, get_map_start_line(file));
-	line = get_next_line(fd);
+	idx = 0;
+	while (idx < map->height)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		map->grid[idx] = line;
+		idx++;
+	}
 	close(fd);
 	return (0);
+}
+
+t_map	*ft_parsing(const char *file)
+{
+	t_map		*map;
+
+	map = create_tmap();
+	if (!map)
+		return (NULL);
+	if (!is_cub_format((char *)file))
+		return (free_tmap(map), NULL);
+	if (get_map_size((char *)file, map) == -1)
+		return (free_tmap(map), NULL);
+	if (allocate_map(map) == -1)
+		return (free_tmap(map), NULL);
+	if (read_map(map, (char *)file) == -1)
+		return (free_tmap(map), NULL);
+	if (is_map_valid(map) == -1)
+		return (free_tmap(map), NULL);
+	return (map);
 }
