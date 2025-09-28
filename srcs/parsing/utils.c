@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/28 19:55:31 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/28 21:48:29 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	get_map_start_line(char *file)
 	line = gnl(fd);
 	while (line)
 	{
-		ft_printf("Line: %s",z line);
+		remove_newline(line);
 		if (is_map_line(line) == 1)
 		{
 			free(line);
@@ -75,7 +75,7 @@ int	buffer_iterator(int fd, char *file)
 		return (-1);
 	while (idx < line_num)
 	{
-		buf = get_next_line(fd);
+		buf = gnl(fd);
 		if (!buf)
 			break ;
 		free(buf);

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:40:40 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/22 21:18:26 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/28 20:12:46 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,17 @@ void	free_tmap(t_map *map)
 	free_tab(map->grid);
 	free(map->start);
 	free(map);
+}
+
+void	remove_newline(char *str)
+{
+	int		idx;
+
+	idx = 0;
+	while (str[idx])
+	{
+		if (str[idx] == '\n')
+			str[idx] = '\0';
+		idx++;
+	}
 }

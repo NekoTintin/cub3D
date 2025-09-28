@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:04 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/25 20:32:44 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/28 22:05:19 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	print_map(t_map *map)
 		ft_printf("%s\n", map->grid[i]);
 		i++;
 	}
-	ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -41,6 +40,6 @@ int	main(int argc, char **argv)
 	map = ft_parsing(argv[1]);
 	if (!map)
 		return (1);
-	//print_map(map);
+	print_map(map);
 	return (0);
 }
