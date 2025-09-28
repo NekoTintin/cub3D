@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/22 00:38:38 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/28 19:55:31 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static int	is_map_line(char *line)
 	{
 		if (line[idx] != ' ' && line[idx] != '0' && line[idx] != '1'
 			&& line[idx] != 'N' && line[idx] != 'S'
-			&& line[idx] != 'E' && line[idx] != 'W' && line[idx] != '\n')
+			&& line[idx] != 'E' && line[idx] != 'W')
 			return (0);
-		if (line[idx] == '0' || line[idx] == '1' || line[idx] == 'N'
-			|| line[idx] == 'S' || line[idx] == 'E' || line[idx] == 'W')
+		if (line[idx] == '1' || line[idx] == 'N' || line[idx] == 'S'
+			|| line[idx] == 'E' || line[idx] == 'W' || line[idx] == '0')
 			has_map_char = 1;
 		idx++;
 	}
@@ -45,10 +45,11 @@ int	get_map_start_line(char *file)
 	if (fd == -1)
 		return (-1);
 	line_counter = 0;
-	line = get_next_line(fd);
+	line = gnl(fd);
 	while (line)
 	{
-		if (is_map_line(line))
+		ft_printf("Line: %s",z line);
+		if (is_map_line(line) == 1)
 		{
 			free(line);
 			close(fd);
@@ -56,19 +57,23 @@ int	get_map_start_line(char *file)
 		}
 		line_counter++;
 		free(line);
-		line = get_next_line(fd);
+		line = gnl(fd);
 	}
 	close(fd);
 	return (-1);
 }
 
-void	buffer_iterator(int fd, int size)
+int	buffer_iterator(int fd, char *file)
 {
 	char	*buf;
 	int		idx;
+	int		line_num;
 
 	idx = 0;
-	while (idx < size)
+	line_num = get_map_start_line(file);
+	if (line_num == -1)
+		return (-1);
+	while (idx < line_num)
 	{
 		buf = get_next_line(fd);
 		if (!buf)
@@ -76,6 +81,7 @@ void	buffer_iterator(int fd, int size)
 		free(buf);
 		idx++;
 	}
+	return (0);
 }
 
 // Get map size to allocate memory
@@ -91,7 +97,8 @@ int	get_map_size(char *file, t_map *map)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	buffer_iterator(fd, get_map_start_line(file));
+	if (buffer_iterator(fd, file) == -1)
+		return (close(fd), -1);
 	line = get_next_line(fd);
 	while (line)
 	{

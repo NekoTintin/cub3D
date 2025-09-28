@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 16:34:31 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/23 01:05:08 by qupollet         ###   ########.fr       */
+/*   Created: 2025/09/23 01:09:01 by qupollet          #+#    #+#             */
+/*   Updated: 2025/09/25 20:30:16 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/cub3D.h"
 
-char	*ft_read_from_file(int fd, char *stash, char *buf)
+static char	*ft_read_from_file(int fd, char *stash, char *buf)
 {
 	char	*tmp;
 	int		nb_char;
@@ -36,14 +36,16 @@ char	*ft_read_from_file(int fd, char *stash, char *buf)
 	return (stash);
 }
 
-char	*ft_get_line(char *stash)
+static char	*ft_get_line(char *stash)
 {
 	size_t		idx;
 	size_t		size;
 	char		*fstring;
 
 	idx = 0;
-	while (stash[idx] != '\n' && stash[idx] != 0)
+	while (stash[idx] && stash[idx] != '\n')
+		idx++;
+	if (stash[idx] == '\n')
 		idx++;
 	size = idx;
 	fstring = malloc(sizeof(char) * (size + 1));
@@ -59,7 +61,7 @@ char	*ft_get_line(char *stash)
 	return (fstring);
 }
 
-char	*ft_remove_before_nl(char **stash)
+static char	*ft_remove_before_nl(char **stash)
 {
 	size_t		idx;
 	size_t		size;
@@ -85,7 +87,7 @@ char	*ft_remove_before_nl(char **stash)
 	return (*stash);
 }
 
-int	ft_init(char **stash, char **buf)
+static int	ft_init(char **stash, char **buf)
 {
 	if (!*stash)
 	{
@@ -103,7 +105,7 @@ int	ft_init(char **stash, char **buf)
 	return (0);
 }
 
-char	*get_next_line(int fd)
+char	*gnl(int fd)
 {
 	char			*buf;
 	static char		*stash;

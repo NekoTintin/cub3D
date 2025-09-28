@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:40:40 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/22 00:35:24 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/22 21:18:26 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	free_tab(char **tab)
 {
 	int		idx;
 
-	if (!tab)
-		return ;
 	idx = 0;
 	while (tab[idx])
 	{
@@ -43,10 +41,9 @@ void	free_tab(char **tab)
 
 void	free_tmap(t_map *map)
 {
-	if (!map)
+	if (!map || !map->grid)
 		return ;
 	free_tab(map->grid);
 	free(map->start);
-	free(map->grid);
 	free(map);
 }

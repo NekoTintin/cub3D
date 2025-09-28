@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/22 00:38:46 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/23 01:32:01 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,15 @@ typedef int	(*t_map_action)(t_map *map, char *cell, int x, int y);
 char		**create_copy(t_map *map);
 int			backtracking(t_map *map, int x, int y, char **visited);
 
+// gnl.c
+char		*gnl(int fd);
+
 // parsing.c
 t_map		*ft_parsing(const char *file);
 
 // utils.c
 int			get_map_start_line(char *file);
-void		buffer_iterator(int fd, int size);
+int			buffer_iterator(int fd, char *file);
 int			get_map_size(char *file, t_map *map);
 int			allocate_map(t_map *map);
 

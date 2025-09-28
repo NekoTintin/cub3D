@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/21 22:12:50 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/22 22:12:17 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include "../libft/libft.h"
 # include "parsing.h"
 # include <fcntl.h>
+
+// Remove later
+void	print_map(t_map *map);
 
 // utils.c
 void	ft_print_warning(char *msg);

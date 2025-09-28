@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:04 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/22 00:35:00 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:32:44 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int	main(int argc, char **argv)
 	map = ft_parsing(argv[1]);
 	if (!map)
 		return (1);
+	//print_map(map);
 	return (0);
 }

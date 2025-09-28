@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/22 00:47:48 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/28 19:52:54 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,20 @@ static int	read_map(t_map *map, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	buffer_iterator(fd, get_map_start_line(file));
+	if (buffer_iterator(fd, file) == -1)
+		return (close(fd), -1);
 	idx = 0;
 	while (idx < map->height)
 	{
-		line = get_next_line(fd);
+		line = gnl(fd);
 		if (!line)
 			break ;
+		free(map->grid[idx]);
 		map->grid[idx] = line;
 		idx++;
 	}
 	close(fd);
+	get_next_line(-1);
 	return (0);
 }
 
@@ -110,6 +113,7 @@ t_map	*ft_parsing(const char *file)
 		return (free_tmap(map), NULL);
 	if (read_map(map, (char *)file) == -1)
 		return (free_tmap(map), NULL);
+	print_map(map);
 	if (is_map_valid(map) == -1)
 		return (free_tmap(map), NULL);
 	return (map);
