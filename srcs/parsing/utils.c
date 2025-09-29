@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/28 21:48:29 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:51:31 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ static int	is_map_line(char *line)
 
 	idx = 0;
 	has_map_char = 0;
+	if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0
+		|| ft_strncmp(line, "WE ", 3) == 0 || ft_strncmp(line, "EA ", 3) == 0
+		|| ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0)
+		return (0);
+	if (line[0] == '\n' || line[0] == '\0')
+		return (0);
 	while (line[idx])
 	{
 		if (line[idx] != ' ' && line[idx] != '0' && line[idx] != '1'
@@ -118,10 +124,12 @@ int	allocate_map(t_map *map)
 {
 	int		idx;
 
+	ft_printf("Height: %d\n", map->height);
 	map->grid = ft_calloc(map->height + 1, sizeof(char *));
 	if (!map->grid)
 		return (-1);
 	idx = 0;
+	ft_printf("Line size: %d\n", map->width);
 	while (idx < map->height)
 	{
 		map->grid[idx] = ft_calloc(map->width + 1, sizeof(char));

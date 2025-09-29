@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/23 01:32:01 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/29 16:43:09 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int			backtracking(t_map *map, int x, int y, char **visited);
 // gnl.c
 char		*gnl(int fd);
 
+// map_read.c
+int			read_map(t_map *map, char *file);
+
 // parsing.c
 t_map		*ft_parsing(const char *file);
 
@@ -46,7 +49,6 @@ int			get_map_size(char *file, t_map *map);
 int			allocate_map(t_map *map);
 
 // verifs_utils.c
-int			replace_space(t_map *map, char *cell, int x, int y);
 int			is_start_pos(t_map *map, char *cell, int x, int y);
 int			check_valid_char(t_map *map, char *cell, int x, int y);
 int			count_start_char(t_map *map);

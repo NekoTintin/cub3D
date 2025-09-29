@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/28 22:05:17 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:42:01 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	is_map_valid(t_map *map)
 {
 	char		**copy;
 
+	print_map(map);
 	if (map_iter(map, check_valid_char) == -1)
 		return (-1);
-	map_iter(map, replace_space);
 	if (count_start_char(map) == -1)
 		return (-1);
 	if (map_iter(map, is_start_pos) == -1)
@@ -70,33 +70,6 @@ static t_map	*create_tmap(void)
 	if (!map->start)
 		return (free(map), NULL);
 	return (map);
-}
-
-static int	read_map(t_map *map, char *file)
-{
-	int		fd;
-	char	*line;
-	int		idx;
-
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (-1);
-	if (buffer_iterator(fd, file) == -1)
-		return (close(fd), -1);
-	idx = 0;
-	while (idx < map->height)
-	{
-		line = gnl(fd);
-		if (!line)
-			break ;
-		free(map->grid[idx]);
-		remove_newline(line);
-		map->grid[idx] = line;
-		idx++;
-	}
-	close(fd);
-	get_next_line(-1);
-	return (0);
 }
 
 t_map	*ft_parsing(const char *file)

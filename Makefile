@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/09/23 01:33:22 by qupollet         ###   ########.fr        #
+#    Updated: 2025/09/29 16:40:54 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ DEBUG = -g3
 
 SRC =	parsing/backtracking.c \
 		parsing/gnl.c \
+		parsing/map_read.c \
 		parsing/parsing.c \
 		parsing/utils.c \
 		parsing/verif_utils.c \

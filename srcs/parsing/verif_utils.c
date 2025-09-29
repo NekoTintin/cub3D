@@ -6,21 +6,11 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 17:42:48 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/28 22:01:54 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:41:33 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-int	replace_space(t_map *map, char *cell, int x, int y)
-{
-	(void)map;
-	(void)x;
-	(void)y;
-	if (*cell == ' ')
-		*cell = '.';
-	return (0);
-}
 
 int	is_start_pos(t_map *map, char *cell, int x, int y)
 {
@@ -39,8 +29,9 @@ int	check_valid_char(t_map *map, char *cell, int x, int y)
 	(void)x;
 	(void)y;
 	if (*cell != '0' && *cell != '1' && *cell != 'N' && *cell != 'S'
-		&& *cell != 'E' && *cell != 'W' && *cell != ' ' && *cell != '\0')
+		&& *cell != 'E' && *cell != 'W' && *cell != '.' && *cell != '\0')
 	{
+		ft_printf("Invalid character '%c' at (%d, %d)\n", *cell, x, y);
 		ft_print_error("Map contains invalid characters");
 		return (-1);
 	}

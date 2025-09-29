@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:51:04 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/22 00:29:45 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:05:03 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	**create_copy(t_map *map)
 	char	**copy;
 	int		idx;
 
-	copy = ft_calloc(map->height, sizeof(char *));
+	copy = ft_calloc(map->height + 1, sizeof(char *));
 	if (!copy)
 		return (NULL);
 	idx = 0;
@@ -34,6 +34,7 @@ char	**create_copy(t_map *map)
 		}
 		idx++;
 	}
+	copy[map->height] = NULL;
 	return (copy);
 }
 
