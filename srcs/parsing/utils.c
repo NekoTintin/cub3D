@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/29 17:51:31 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/01 23:07:56 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,12 +124,10 @@ int	allocate_map(t_map *map)
 {
 	int		idx;
 
-	ft_printf("Height: %d\n", map->height);
 	map->grid = ft_calloc(map->height + 1, sizeof(char *));
 	if (!map->grid)
 		return (-1);
 	idx = 0;
-	ft_printf("Line size: %d\n", map->width);
 	while (idx < map->height)
 	{
 		map->grid[idx] = ft_calloc(map->width + 1, sizeof(char));

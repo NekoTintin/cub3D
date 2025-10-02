@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/29 17:42:01 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/02 00:06:38 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	is_map_valid(t_map *map)
 {
 	char		**copy;
 
-	print_map(map);
 	if (map_iter(map, check_valid_char) == -1)
 		return (-1);
 	if (count_start_char(map) == -1)
@@ -69,6 +68,16 @@ static t_map	*create_tmap(void)
 	map->start = ft_calloc(1, sizeof(t_position));
 	if (!map->start)
 		return (free(map), NULL);
+	map->north = NULL;
+	map->south = NULL;
+	map->west = NULL;
+	map->east = NULL;
+	map->floor[0] = -1;
+	map->floor[1] = -1;
+	map->floor[2] = -1;
+	map->ceiling[0] = -1;
+	map->ceiling[1] = -1;
+	map->ceiling[2] = -1;
 	return (map);
 }
 

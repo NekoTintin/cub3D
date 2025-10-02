@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/29 16:43:09 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/02 18:23:15 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef struct s_map
 	int			height;
 	char		**grid;
 	t_position	*start;
+	char		*north;
+	char		*south;
+	char		*west;
+	char		*east;
+	int			floor[3];
+	int			ceiling[3];
 }				t_map;
 
 typedef int	(*t_map_action)(t_map *map, char *cell, int x, int y);
@@ -41,6 +47,10 @@ int			read_map(t_map *map, char *file);
 
 // parsing.c
 t_map		*ft_parsing(const char *file);
+
+// read_paths.c
+int			read_from_file(t_map *map, char *file);
+int			allocate_textures(t_map *map, char **splited);
 
 // utils.c
 int			get_map_start_line(char *file);

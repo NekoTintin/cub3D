@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:40:40 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/28 20:12:46 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/02 00:08:42 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,15 @@ void	free_tab(char **tab)
 
 void	free_tmap(t_map *map)
 {
-	if (!map || !map->grid)
+	if (!map)
 		return ;
-	free_tab(map->grid);
+	if (map->grid)
+		free_tab(map->grid);
 	free(map->start);
+	free(map->north);
+	free(map->south);
+	free(map->west);
+	free(map->east);
 	free(map);
 }
 
