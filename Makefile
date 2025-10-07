@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/09/29 16:40:54 by qupollet         ###   ########.fr        #
+#    Updated: 2025/10/07 10:50:22 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,14 @@ MLX_FLAGS = -L${MLX_DIR} -lmlx -lXext -lX11 -lm
 
 DEBUG = -g3
 
-SRC =	parsing/backtracking.c \
+SRC =	display/display_window.c \
+		display/utils.c \
+		parsing/backtracking.c \
 		parsing/gnl.c \
 		parsing/map_read.c \
 		parsing/parsing.c \
+		parsing/read_paths.c \
+		parsing/read_paths2.c \
 		parsing/utils.c \
 		parsing/verif_utils.c \
 		cub3D.c \
@@ -67,6 +71,7 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | ${OBJ_DIR}
 ${OBJ_DIR}:
 	@echo "${YELLOW}📂 Creating directory ${OBJ_DIR}...${NC}"
 	@mkdir -p ${OBJ_DIR}
+	@mkdir -p ${OBJ_DIR}/display
 	@mkdir -p ${OBJ_DIR}/parsing
 
 # Règle pour la compilation de la libft

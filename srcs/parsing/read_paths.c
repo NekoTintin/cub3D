@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 23:53:33 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/02 18:22:51 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:14:34 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	assign_textures(t_map *map, char *line)
 	return (free_tab(path), 0);
 }
 
-int	read_from_file(t_map *map, char *map_file)
+int	are_paths_valid(t_map *map, char *map_file)
 {
 	int			fd;
 	char		*line;
@@ -97,15 +97,16 @@ int	read_from_file(t_map *map, char *map_file)
 		if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0
 			|| ft_strncmp(line, "WE ", 3) == 0
 			|| ft_strncmp(line, "EA ", 3) == 0)
+		{
 			if (assign_textures(map, line) == -1)
-				return (free(line), close(fd), -1);
+				return (gnl(-1), free(line), close(fd), -1);
+		}
 		else if (ft_strncmp(line, "F ", 2) == 0
 			|| ft_strncmp(line, "C ", 2) == 0)
 			if (assign_colors(map, line) == -1)
-				return (free(line), close(fd), -1);
+				return (gnl(-1), free(line), close(fd), -1);
 		free(line);
 		line = gnl(fd);
 	}
-	close(fd);
-	return (0);
+	return (close(fd), 0);
 }

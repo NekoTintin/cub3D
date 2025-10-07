@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:14:08 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/02 18:21:32 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:03:23 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	allocate_textures(t_map *map, char **splited)
 		target = &map->east;
 	else
 		return (ft_print_error("Invalid texture type"), -1);
-	*target = strdup_path(splited[1]);
+	*target = ft_strdup(splited[1]);
 	if (!*target)
 		return (
 			ft_print_error("Failed to allocate memory for texture path"), -1);

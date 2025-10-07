@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/02 00:06:38 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:12:43 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,26 @@ static t_map	*create_tmap(void)
 	return (map);
 }
 
+// Check  if map contain all required elements
+// NO, SO, WE, EA, F, C
+static int	check_file_completed(t_map *map)
+{
+	if (!map->north)
+		return (ft_print_error("Missing texture path: North"), -1);
+	else if (!map->south)
+		return (ft_print_error("Missing texture path: South"), -1);
+	else if (!map->west)
+		return (ft_print_error("Missing texture path: West"), -1);
+	else if (!map->east)
+		return (ft_print_error("Missing texture path: East"), -1);
+	else if (map->floor[0] == -1 || map->floor[1] == -1 || map->floor[2] == -1)
+		return (ft_print_error("Missing color: Floor"), -1);
+	else if (map->ceiling[0] == -1 || map->ceiling[1] == -1
+		|| map->ceiling[2] == -1)
+		return (ft_print_error("Missing color: Ceiling"), -1);
+	return (0);
+}
+
 t_map	*ft_parsing(const char *file)
 {
 	t_map		*map;
@@ -97,6 +117,10 @@ t_map	*ft_parsing(const char *file)
 	if (read_map(map, (char *)file) == -1)
 		return (free_tmap(map), NULL);
 	if (is_map_valid(map) == -1)
+		return (free_tmap(map), NULL);
+	if (are_paths_valid(map, (char *)file) == -1)
+		return (free_tmap(map), NULL);
+	if (check_file_completed(map) == -1)
 		return (free_tmap(map), NULL);
 	return (map);
 }

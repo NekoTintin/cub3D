@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/02 18:23:15 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/07 09:54:16 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int			read_map(t_map *map, char *file);
 t_map		*ft_parsing(const char *file);
 
 // read_paths.c
-int			read_from_file(t_map *map, char *file);
+int			are_paths_valid(t_map *map, char *file);
 int			allocate_textures(t_map *map, char **splited);
 
 // utils.c

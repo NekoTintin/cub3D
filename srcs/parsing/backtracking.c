@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:51:04 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/01 23:03:59 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:31:00 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ char	**create_copy(t_map *map)
 	return (copy);
 }
 
-// Remove the fourth last lines to disable diagonal
-// if needed, not sure it's necessary
+// TO REDO
 int	backtracking(t_map *map, int x, int y, char **visited)
 {
 	if (x < 0 || y < 0 || x >= map->width || y >= map->height)

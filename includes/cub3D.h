@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/09/28 20:12:48 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:32:24 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 
 # include "../libft/libft.h"
 # include "parsing.h"
+# include "display.h"
 # include <fcntl.h>
+# include "../minilibx/mlx.h"
 
 // Remove later
 void	print_map(t_map *map);
