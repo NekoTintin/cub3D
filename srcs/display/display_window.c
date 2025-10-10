@@ -6,11 +6,15 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:22:49 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/07 10:51:36 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/10 15:28:58 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+int	close_window(t_win_data *data);
+
+
 
 int	close_window(t_win_data *data)
 {
@@ -18,13 +22,14 @@ int	close_window(t_win_data *data)
 	exit(0);
 }
 
-t_win_data	*create_win_data(void)
+t_win_data	*create_win_data(t_map *map)
 {
 	t_win_data	*data;
 
 	data = ft_calloc(1, sizeof(t_win_data));
 	if (!data)
 		return (NULL);
+	data->map = map;
 	return (data);
 }
 
@@ -32,8 +37,7 @@ int	display_window(t_map *map)
 {
 	t_win_data	*data;
 
-	(void)map;
-	data = create_win_data();
+	data = create_win_data(map);
 	if (!data)
 		return (ft_print_error("Failed to allocate window data"), -1);
 	data->ptr = mlx_init();
@@ -43,7 +47,7 @@ int	display_window(t_map *map)
 	if (!data->win)
 		return (free(data->ptr), ft_print_error("Failed to create window"), -1);
 	mlx_hook(data->win, 17, 0, close_window, data);
+	mlx_key_hook(data->win, key_hook, data);
 	mlx_loop(data->ptr);
-	free_win_data(data);
 	return (0);
 }
