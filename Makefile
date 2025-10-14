@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/10/14 14:06:23 by qupollet         ###   ########.fr        #
+#    Updated: 2025/10/14 18:00:58 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC =	display/display_window.c \
 		display/hooks.c \
 		display/load_textures.c \
 		display/utils.c \
+		game/game.c \
 		parsing/backtracking.c \
 		parsing/gnl.c \
 		parsing/map_read.c \
@@ -43,6 +44,7 @@ SRC =	display/display_window.c \
 		parsing/verif_utils.c \
 		cub3D.c \
 		utils.c \
+		utils2.c \
 
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC}}
 OBJECTS = ${addprefix ${OBJ_DIR}/, ${SRC:.c=.o}}
@@ -74,6 +76,7 @@ ${OBJ_DIR}:
 	@echo "${YELLOW}📂 Creating directory ${OBJ_DIR}...${NC}"
 	@mkdir -p ${OBJ_DIR}
 	@mkdir -p ${OBJ_DIR}/display
+	@mkdir -p ${OBJ_DIR}/game
 	@mkdir -p ${OBJ_DIR}/parsing
 
 # Règle pour la compilation de la libft

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/14 16:37:58 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/14 17:57:57 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,10 @@
 # define END "\033[0m"
 
 # include "../libft/libft.h"
+# include "../minilibx/mlx.h"
+# include <fcntl.h>
 # include "parsing.h"
 # include "display.h"
-# include <fcntl.h>
-# include "../minilibx/mlx.h"
-
-typedef struct s_position
-{
-	double	x;
-	double	y;
-}				t_position;
 
 typedef struct s_game
 {
@@ -36,6 +30,10 @@ typedef struct s_game
 	t_win_data		*data;
 	t_position		*player_pos;
 }			t_game;
+
+// game.c
+t_game		*create_game_struct(t_map *map);
+int					game_start(t_game *game);
 
 // Remove later
 void	print_char_map(char **map);
@@ -47,5 +45,6 @@ void	ft_print_error(char *msg);
 void	free_tab(char **tab);
 void	free_tmap(t_map *map);
 void	remove_newline(char *str);
+void	free_game(t_game *game);
 
 #endif

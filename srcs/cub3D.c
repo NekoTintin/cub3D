@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:04 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/14 16:47:25 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/14 17:58:19 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	print_map(t_map *map)
 int	main(int argc, char **argv)
 {
 	t_map		*map;
+	t_game		*game;
 
 	if (argc != 2)
 	{
@@ -54,6 +55,10 @@ int	main(int argc, char **argv)
 	map = ft_parsing(argv[1]);
 	if (!map)
 		return (1);
-	display_window(map);
+	game = create_game_struct(map);
+	if (!game)
+		return (free_tmap(map), 1);
+	game_start(game);
+	free_game(game);
 	return (0);
 }

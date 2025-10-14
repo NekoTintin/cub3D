@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 10:40:30 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/14 17:54:35 by qupollet         ###   ########.fr       */
+/*   Created: 2025/10/14 17:20:44 by qupollet          #+#    #+#             */
+/*   Updated: 2025/10/14 17:56:07 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+# include "../../includes/cub3D.h"
 
-void	free_win_data(t_win_data *data)
+t_game	*create_game_struct(t_map *map)
 {
-	if (!data)
-		return ;
-	if (data->win)
-	{
-		mlx_destroy_window(data->ptr, data->win);
-		data->win = NULL;
-	}
-	if (data->ptr)
-	{
-		mlx_destroy_display(data->ptr);
-		free(data->ptr);
-		data->ptr = NULL;
-	};
-	free(data);
+	t_game	*game;
+
+	game = ft_calloc(1, sizeof(t_game));
+	if (!game)
+		return (NULL);
+	game->map = map;
+	return (game);
+}
+
+int	game_start(t_game *game)
+{
+	if (display_window(game) == -1)
+		return (ft_print_error("Failed to display window"), -1);
+	return (0);
 }
