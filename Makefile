@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/10/07 10:50:22 by qupollet         ###   ########.fr        #
+#    Updated: 2025/10/14 14:06:23 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ MLX_FLAGS = -L${MLX_DIR} -lmlx -lXext -lX11 -lm
 DEBUG = -g3
 
 SRC =	display/display_window.c \
+		display/hooks.c \
+		display/load_textures.c \
 		display/utils.c \
 		parsing/backtracking.c \
 		parsing/gnl.c \

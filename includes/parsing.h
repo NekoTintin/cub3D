@@ -6,36 +6,37 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/07 09:54:16 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:52:12 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-typedef struct s_position
+typedef struct s_map_position
 {
-	int	x;
-	int	y;
-}				t_position;
+	int			x;
+	int			y;
+}				t_map_position;
 
 typedef struct s_map
 {
-	int			width;
-	int			height;
-	char		**grid;
-	t_position	*start;
-	char		*north;
-	char		*south;
-	char		*west;
-	char		*east;
-	int			floor[3];
-	int			ceiling[3];
+	int				width;
+	int				height;
+	char			**grid;
+	t_map_position	*start;
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	int				floor[3];
+	int				ceiling[3];
 }				t_map;
 
 typedef int	(*t_map_action)(t_map *map, char *cell, int x, int y);
 
 // backtracking.c
+int			backtracking_start(t_map *map, int x, int y, char **visited);
 char		**create_copy(t_map *map);
 int			backtracking(t_map *map, int x, int y, char **visited);
 

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 23:53:33 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/07 10:14:34 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/14 13:53:51 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,15 @@ static int	is_valid_color(char *color_str)
 static int	check_if_path_is_valid(char *path)
 {
 	int		fd;
+	int		size;
 
 	if (!path || !*path)
 		return (ft_print_error("Texture path is NULL or empty"), -1);
+	size = ft_strlen(path);
+	if (size < 4)
+		return (ft_print_error("Texture path is too short"), -1);
+	if (ft_strncmp(path + size - 4, ".xpm", 4) != 0)
+		return (ft_print_error("Texture file is not a .xpm file"), -1);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{

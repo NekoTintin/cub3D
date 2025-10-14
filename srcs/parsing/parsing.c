@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/07 10:12:43 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:58:37 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ static int	is_map_valid(t_map *map)
 	copy = create_copy(map);
 	if (!copy)
 		return (-1);
-	if (backtracking(map, map->start->x, map->start->y, copy) == -1)
+	map->grid[map->start->y][map->start->x] = '0';
+	copy[map->start->y][map->start->x] = '0';
+	if (backtracking_start(map, map->start->x, map->start->y, copy) == -1)
 	{
 		ft_print_error("Map is not closed");
 		free_tab(copy);

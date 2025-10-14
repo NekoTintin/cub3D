@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/07 10:32:24 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:37:58 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,21 @@
 # include <fcntl.h>
 # include "../minilibx/mlx.h"
 
+typedef struct s_position
+{
+	double	x;
+	double	y;
+}				t_position;
+
+typedef struct s_game
+{
+	t_map			*map;
+	t_win_data		*data;
+	t_position		*player_pos;
+}			t_game;
+
 // Remove later
+void	print_char_map(char **map);
 void	print_map(t_map *map);
 
 // utils.c

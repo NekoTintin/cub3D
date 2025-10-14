@@ -6,15 +6,11 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:22:49 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/10 15:28:58 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/14 13:33:37 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-int	close_window(t_win_data *data);
-
-
 
 int	close_window(t_win_data *data)
 {

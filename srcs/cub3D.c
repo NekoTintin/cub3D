@@ -6,11 +6,24 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:04 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/07 10:51:28 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:47:25 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+// Aussi un test, à enlever plus tard
+void	print_char_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		ft_printf("%s\n", map[i]);
+		i++;
+	}
+}
 
 // Test, à enlever plus tard
 void	print_map(t_map *map)
