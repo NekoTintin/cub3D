@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 17:42:48 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/02 18:13:18 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:49:05 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	is_start_pos(t_map *map, char *cell, int x, int y)
 {
 	if (*cell == 'N' || *cell == 'S' || *cell == 'E' || *cell == 'W')
 	{
-		map->start->x = x;
-		map->start->y = y;
+		map->start_x = x;
+		map->start_y = y;
 		return (1);
 	}
 	return (0);

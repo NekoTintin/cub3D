@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/14 17:57:57 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:58:06 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,24 @@
 # include "parsing.h"
 # include "display.h"
 
+// Pos -> player position
+// Dir -> player direction vector
+// Plane -> camera plane (perpendicular to direction vector)
+typedef struct s_player
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}				t_player;
+
 typedef struct s_game
 {
 	t_map			*map;
 	t_win_data		*data;
-	t_position		*player_pos;
+	t_player		*player;
 }			t_game;
 
 // game.c

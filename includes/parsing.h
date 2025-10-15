@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/14 17:41:57 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:47:51 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef struct s_map
 	int				width;
 	int				height;
 	char			**grid;
-	t_map_position	*start;
+	int				start_x;
+	int				start_y;
 	char			*north;
 	char			*south;
 	char			*west;
@@ -32,12 +33,6 @@ typedef struct s_map
 	int				floor[3];
 	int				ceiling[3];
 }				t_map;
-
-typedef struct s_position
-{
-	double	x;
-	double	y;
-}				t_position;
 
 typedef int	(*t_map_action)(t_map *map, char *cell, int x, int y);
 
