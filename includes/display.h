@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/14 18:00:15 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/15 17:22:55 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ typedef struct s_win_data
 	void			*ptr;
 	void			*win;
 	t_textures		*textures;
+	int				win_width;
+	int				win_height;
+	int				tex_size;
 }	t_win_data;
 
 // display_window.c

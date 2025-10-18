@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:51:04 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/14 16:51:37 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/15 17:06:37 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	backtracking_start(t_map *map, int x, int y, char **visited)
 		{
 			if (visited[y_theforbidden][x_theforgotten] == '0')
 			{
-				if (backtracking(map, x_theforgotten, y_theforbidden, visited) == -1)
+				if (backtracking(map, x_theforgotten,
+						y_theforbidden, visited) == -1)
 					return (-1);
 			}
 			x_theforgotten++;

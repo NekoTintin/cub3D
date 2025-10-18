@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/10/15 16:33:55 by qupollet         ###   ########.fr        #
+#    Updated: 2025/10/16 18:23:12 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC =	display/display_window.c \
 		display/load_textures.c \
 		display/utils.c \
 		game/game.c \
+		minimap/map_window.c \
 		parsing/backtracking.c \
 		parsing/gnl.c \
 		parsing/map_read.c \
@@ -77,6 +78,7 @@ ${OBJ_DIR}:
 	@mkdir -p ${OBJ_DIR}
 	@mkdir -p ${OBJ_DIR}/display
 	@mkdir -p ${OBJ_DIR}/game
+	@mkdir -p ${OBJ_DIR}/minimap
 	@mkdir -p ${OBJ_DIR}/parsing
 
 # Règle pour la compilation de la libft
