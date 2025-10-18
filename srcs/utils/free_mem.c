@@ -6,11 +6,11 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:19:03 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/18 17:24:12 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/18 19:24:16 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub3D.h"
+#include "../includes/cub3D.h"
 
 void	free_tab(char **tablo)
 {
@@ -67,4 +67,17 @@ void	free_wdata(t_wdata *data)
 		data->ptr = NULL;
 	}
 	free(data);
+}
+
+void	free_timg(t_img *img, void *mlx_ptr)
+{
+	if (!img || !mlx_ptr)
+		return ;
+	if (img->mlx_img)
+		mlx_destroy_image(mlx_ptr, img->mlx_img);
+	else
+		ft_print_error("Cannot free image: img->mlx_img is NULL");
+	img->mlx_img = NULL;
+	img->addr = NULL;
+	free(img);
 }

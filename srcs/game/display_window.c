@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:22:49 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/18 17:56:05 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/18 19:02:29 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	close_window(t_game *game)
 t_wdata	*create_win_data(void)
 {
 	t_wdata	*data;
-	
+
 	data = ft_calloc(1, sizeof(t_wdata));
 	if (!data)
 		return (NULL);

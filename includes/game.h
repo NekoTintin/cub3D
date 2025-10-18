@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/18 17:58:23 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/18 19:14:22 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,37 +30,44 @@
 # define KEY_Z 122
 # define KEY_Q 113
 
-typedef struct s_wdata t_wdata;
+// Mouse buttons
+# define LEFT_CLICK 1
+# define MIDDLE_CLICK 2
+# define RIGHT_CLICK 3
+
+typedef struct s_wdata	t_wdata;
 
 // Pos -> player position
 // Dir -> player direction vector
 // Plane -> camera plane (perpendicular to direction vector)
 typedef struct s_player
 {
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-}				t_player;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
+}					t_player;
 
+// Base struct, to hold anywhere needed
 typedef struct s_game
 {
 	t_map			*map;
 	t_wdata			*wdata;
 	t_player		*player;
-}			t_game;
+}					t_game;
 
+// To hold textures and colors
 typedef struct s_textures
 {
-	void	*north_tex;
-	void	*south_tex;
-	void	*west_tex;
-	void	*east_tex;
-	int		ceiling_color;
-	int		floor_color;
-}			t_textures;
+	void			*north_tex;
+	void			*south_tex;
+	void			*west_tex;
+	void			*east_tex;
+	int				ceiling_color;
+	int				floor_color;
+}					t_textures;
 
 // window_data struct
 typedef struct s_wdata
@@ -71,7 +78,25 @@ typedef struct s_wdata
 	int				win_width;
 	int				win_height;
 	int				tex_size;
-}	t_wdata;
+}					t_wdata;
+
+// Image struct
+// Needed to create a buffer
+// BPP = bits per pixel
+// endian is the order of bytes (0 = little endian, 1 = big endian) 
+// Do this because mlx_pixel_put is slow
+// DO NOT free img directly, use mlx_destroy_image
+// DO NOT free addr directly, it's managed by mlx
+typedef struct s_img
+{
+	void			*mlx_img;
+	char			*addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
+	int				width;
+	int				height;
+}					t_img;
 
 // display_window.c
 int			display_window(t_game *game);
