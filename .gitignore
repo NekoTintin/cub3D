@@ -2,9 +2,7 @@
 *.o
 *.out
 cub3D
-*.gen
 LICENSE
-*.mk
 *.gch
 *.a
 *.pl
