@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 13:43:01 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/14 17:55:26 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:45:54 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,32 @@ t_textures	*create_tex_struct(void)
 	tex->south_tex = NULL;
 	tex->west_tex = NULL;
 	tex->east_tex = NULL;
-	tex->width = 128;
-	tex->height = 128;
+	tex->ceiling_color = -1;
+	tex->floor_color = -1;
 	return (tex);
 }
 
 int	load_textures(t_game *game)
 {
-	game->data->textures->north_tex = mlx_xpm_file_to_image(game->data->ptr,
-			game->map->north, &game->data->textures->width,
-			&game->data->textures->height);
-	if (!game->data->textures->north_tex)
+	game->wdata->textures->north_tex = mlx_xpm_file_to_image(game->wdata->ptr,
+			game->map->north, &game->wdata->tex_size,
+			&game->wdata->tex_size);
+	if (!game->wdata->textures->north_tex)
 		return (ft_print_error("Failed to load North texture"), -1);
-	game->data->textures->south_tex = mlx_xpm_file_to_image(game->data->ptr,
-			game->map->south, &game->data->textures->width,
-			&game->data->textures->height);
-	if (!game->data->textures->south_tex)
+	game->wdata->textures->south_tex = mlx_xpm_file_to_image(game->wdata->ptr,
+			game->map->south, &game->wdata->tex_size,
+			&game->wdata->tex_size);
+	if (!game->wdata->textures->south_tex)
 		return (ft_print_error("Failed to load South texture"), -1);
-	game->data->textures->west_tex = mlx_xpm_file_to_image(game->data->ptr,
-			game->map->west, &game->data->textures->width,
-			&game->data->textures->height);
-	if (!game->data->textures->west_tex)
+	game->wdata->textures->west_tex = mlx_xpm_file_to_image(game->wdata->ptr,
+			game->map->west, &game->wdata->tex_size,
+			&game->wdata->tex_size);
+	if (!game->wdata->textures->west_tex)
 		return (ft_print_error("Failed to load West texture"), -1);
-	game->data->textures->east_tex = mlx_xpm_file_to_image(game->data->ptr,
-			game->map->east, &game->data->textures->width,
-			&game->data->textures->height);
-	if (!game->data->textures->east_tex)
+	game->wdata->textures->east_tex = mlx_xpm_file_to_image(game->wdata->ptr,
+			game->map->east, &game->wdata->tex_size,
+			&game->wdata->tex_size);
+	if (!game->wdata->textures->east_tex)
 		return (ft_print_error("Failed to load East texture"), -1);
 	return (0);
 }

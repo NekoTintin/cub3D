@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/10/16 18:23:12 by qupollet         ###   ########.fr        #
+#    Updated: 2025/10/18 17:52:28 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,10 @@ MLX_FLAGS = -L${MLX_DIR} -lmlx -lXext -lX11 -lm
 
 DEBUG = -g3
 
-SRC =	display/display_window.c \
-		display/hooks.c \
-		display/load_textures.c \
-		display/utils.c \
+SRC =	game/display_window.c \
 		game/game.c \
+		game/hooks.c \
+		game/load_textures.c \
 		minimap/map_window.c \
 		parsing/backtracking.c \
 		parsing/gnl.c \
@@ -41,11 +40,13 @@ SRC =	display/display_window.c \
 		parsing/parsing.c \
 		parsing/read_paths.c \
 		parsing/read_paths2.c \
+		parsing/structs_init.c \
 		parsing/utils.c \
 		parsing/verif_utils.c \
+		utils/free_mem.c \
+		utils/printing.c \
+		utils/random.c \
 		cub3D.c \
-		utils.c \
-		utils2.c \
 
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC}}
 OBJECTS = ${addprefix ${OBJ_DIR}/, ${SRC:.c=.o}}
@@ -76,10 +77,10 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | ${OBJ_DIR}
 ${OBJ_DIR}:
 	@echo "${YELLOW}📂 Creating directory ${OBJ_DIR}...${NC}"
 	@mkdir -p ${OBJ_DIR}
-	@mkdir -p ${OBJ_DIR}/display
 	@mkdir -p ${OBJ_DIR}/game
 	@mkdir -p ${OBJ_DIR}/minimap
 	@mkdir -p ${OBJ_DIR}/parsing
+	@mkdir -p ${OBJ_DIR}/utils
 
 # Règle pour la compilation de la libft
 ${LIBFT}:

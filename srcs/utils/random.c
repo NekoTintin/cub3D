@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update.c                                           :+:      :+:    :+:   */
+/*   random.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 16:46:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/15 17:08:18 by qupollet         ###   ########.fr       */
+/*   Created: 2025/10/18 17:26:07 by qupollet          #+#    #+#             */
+/*   Updated: 2025/10/18 17:26:35 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include "../includes/cub3D.h"
 
-int	render_game(t_game *game)
+void	remove_newline(char *str)
 {
-	(void)game;
-	return (0);
+	int		idx;
+
+	idx = 0;
+	while (str[idx])
+	{
+		if (str[idx] == '\n')
+			str[idx] = '\0';
+		idx++;
+	}
 }

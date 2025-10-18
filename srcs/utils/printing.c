@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/31 17:40:40 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/15 16:49:16 by qupollet         ###   ########.fr       */
+/*   Created: 2025/10/18 17:16:21 by qupollet          #+#    #+#             */
+/*   Updated: 2025/10/18 17:18:35 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,41 +26,25 @@ void	ft_print_error(char *msg)
 	ft_putstr_fd("\n", 2);
 }
 
-void	free_tab(char **tab)
+void	print_tab(char **tab)
 {
 	int		idx;
 
+	if (!tab)
+		return ;
 	idx = 0;
+	ft_printf("----- Printing Tab -----\n");
 	while (tab[idx])
 	{
-		free(tab[idx]);
+		ft_printf("%s\n", tab[idx]);
 		idx++;
 	}
-	free(tab);
+	ft_printf("----- End of Tab -----\n");
 }
 
-void	free_tmap(t_map *map)
+void	print_map(t_map *map)
 {
-	if (!map)
+	if (!map || !map->grid)
 		return ;
-	if (map->grid)
-		free_tab(map->grid);
-	free(map->north);
-	free(map->south);
-	free(map->west);
-	free(map->east);
-	free(map);
-}
-
-void	remove_newline(char *str)
-{
-	int		idx;
-
-	idx = 0;
-	while (str[idx])
-	{
-		if (str[idx] == '\n')
-			str[idx] = '\0';
-		idx++;
-	}
+	print_tab(map->grid);
 }

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:27:55 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/15 17:49:25 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:56:24 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,32 +56,7 @@ int	display_map_window(t_map *map)
 
 int update_map_render(t_map *map, t_map_window *map_win)
 {
-	int		y;
-	int		x;
-
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			if (map->grid[y][x] == '1')
-			{
-				for (int i = 0; i < map_win->tile_size; i++)
-					mlx_pixel_put(map_win->ptr, map_win->win,
-						x * map_win->tile_size, y * map_win->tile_size, 0x000000FF);
-			}
-			else if (map->grid[y][x] == '0' || map->grid[y][x] == 'N'
-				|| map->grid[y][x] == 'S'
-				|| map->grid[y][x] == 'E' || map->grid[y][x] == 'W')
-			{
-				for (int i = 0; i < map_win->tile_size; i++)
-					mlx_pixel_put(map_win->ptr, map_win->win,
-						x * map_win->tile_size, y * map_win->tile_size, 0x00FFFFFF);
-			}
-			x++;
-		}
-		y++;
-	}
+	(void)map;
+	(void)map_win;
 	return (0);
 }

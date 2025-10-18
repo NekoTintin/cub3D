@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 15:28:46 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/14 17:59:50 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:48:34 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 int	key_hook(int keycode, t_game *game)
 {
-	if (keycode == 65307)
+	if (keycode == KEY_ESC)
 	{
 		ft_printf("Escape key pressed, exiting...\n");
 		close_window(game);
 	}
-	else if (keycode >= 65361 && keycode <= 65364)
-		player_move(keycode, game->data);
+	else
+		player_move(keycode, game->wdata);
 	return (0);
 }
 
-int	player_move(int keycode, t_win_data *data)
+int	player_move(int keycode, t_wdata *data)
 {
-	if (keycode == 65362)
+	if (keycode == KEY_UP || keycode == KEY_W || keycode == KEY_Z)
 		ft_printf("Up arrow key pressed\n");
-	else if (keycode == 65364)
+	else if (keycode == KEY_DOWN || keycode == KEY_S)
 		ft_printf("Down arrow key pressed\n");
-	else if (keycode == 65361)
+	else if (keycode == KEY_LEFT || keycode == KEY_A)
 		ft_printf("Left arrow key pressed\n");
-	else if (keycode == 65363)
+	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		ft_printf("Right arrow key pressed\n");
 	(void)data;
 	return (0);

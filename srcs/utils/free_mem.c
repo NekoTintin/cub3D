@@ -1,29 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   free_mem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 10:40:30 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/15 17:13:16 by qupollet         ###   ########.fr       */
+/*   Created: 2025/10/18 17:19:03 by qupollet          #+#    #+#             */
+/*   Updated: 2025/10/18 17:24:12 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+# include "../includes/cub3D.h"
 
-int	init_tplayer(t_player *player, t_map *map)
+void	free_tab(char **tablo)
 {
-	player->pos_x = map->start_x;
-	player->pos_y = map->start_y;
-	player->dir_x = 0;
-	player->dir_y = 0;
-	player->plane_x = 0;
-	player->plane_y = 0;
-	return (0);
+	int		idx;
+
+	idx = 0;
+	while (tablo[idx])
+	{
+		free(tablo[idx]);
+		idx++;
+	}
+	free(tablo);
 }
 
-void	free_win_data(t_win_data *data)
+void	free_tgame(t_game *game)
+{
+	if (!game)
+		return ;
+	if (game->map)
+		free_tmap(game->map);
+	if (game->wdata)
+		free_wdata(game->wdata);
+	if (game->player)
+		free(game->player);
+	free(game);
+}
+
+void	free_tmap(t_map *map)
+{
+	if (!map)
+		return ;
+	if (map->grid)
+		free_tab(map->grid);
+	free(map->north);
+	free(map->south);
+	free(map->west);
+	free(map->east);
+	free(map);
+}
+
+void	free_wdata(t_wdata *data)
 {
 	if (!data)
 		return ;

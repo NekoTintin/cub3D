@@ -6,11 +6,13 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:51:04 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/15 17:06:37 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:56:56 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+int	backtracking(t_map *map, int x, int y, char **visited);
 
 // Check if the position (x, y) is valid for backtracking
 // Next, check every 0 in the map and backtrack from there

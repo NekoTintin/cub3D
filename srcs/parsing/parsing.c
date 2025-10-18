@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/15 16:48:50 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:57:19 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,31 +57,6 @@ static int	is_cub_format(char *filename)
 	return (1);
 }
 
-static t_map	*create_tmap(void)
-{
-	t_map		*map;
-
-	map = ft_calloc(1, sizeof(t_map));
-	if (!map)
-		return (NULL);
-	map->width = 0;
-	map->height = 0;
-	map->grid = NULL;
-	map->start_x = -1;
-	map->start_y = -1;
-	map->north = NULL;
-	map->south = NULL;
-	map->west = NULL;
-	map->east = NULL;
-	map->floor[0] = -1;
-	map->floor[1] = -1;
-	map->floor[2] = -1;
-	map->ceiling[0] = -1;
-	map->ceiling[1] = -1;
-	map->ceiling[2] = -1;
-	return (map);
-}
-
 // Check  if map contain all required elements
 // NO, SO, WE, EA, F, C
 static int	check_file_completed(t_map *map)
@@ -102,11 +77,12 @@ static int	check_file_completed(t_map *map)
 	return (0);
 }
 
-t_map	*ft_parsing(const char *file)
+t_game	*ft_parsing(const char *file)
 {
+	t_game		*game;
 	t_map		*map;
 
-	map = create_tmap();
+	map = init_tmap();
 	if (!map)
 		return (NULL);
 	if (!is_cub_format((char *)file))
@@ -123,5 +99,8 @@ t_map	*ft_parsing(const char *file)
 		return (free_tmap(map), NULL);
 	if (check_file_completed(map) == -1)
 		return (free_tmap(map), NULL);
-	return (map);
+	game = init_game(map);
+	if (!game)
+		return (free_tmap(map), NULL);
+	return (game);
 }
