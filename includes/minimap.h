@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:35:26 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/18 19:03:09 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/22 23:28:03 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ typedef struct s_minimap
 
 int	display_map_window(t_map *map);
 
+int	mlx_detect_memory_order(t_img *img, int x, int y);
 #endif

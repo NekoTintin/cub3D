@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/10/18 17:52:28 by qupollet         ###   ########.fr        #
+#    Updated: 2025/10/22 23:36:19 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC =	game/display_window.c \
 		parsing/utils.c \
 		parsing/verif_utils.c \
 		utils/free_mem.c \
+		utils/images.c \
 		utils/printing.c \
 		utils/random.c \
 		cub3D.c \

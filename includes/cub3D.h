@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/18 19:23:47 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/23 01:10:03 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ void				free_tab(char **tablo);
 void				free_tgame(t_game *game);
 void				free_tmap(t_map *map);
 void				free_wdata(t_wdata *data);
-void				free_image(t_img *img, void *mlx_ptr);
+void				free_timg(t_img *img, void *mlx_ptr);
+
+// images.c
+t_img				*init_new_image(void *mlx_ptr, int w, int h);
+void				put_pixel_to_img(t_img *img, int x, int y, int color);
 
 // printing.c
 void				ft_print_warning(char *msg);

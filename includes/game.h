@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/18 19:14:22 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/23 00:04:33 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_img
 	int				endian;
 	int				width;
 	int				height;
+	int				bytes_per_pixel;
 }					t_img;
 
 // display_window.c
