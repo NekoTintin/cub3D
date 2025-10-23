@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/10/22 23:36:19 by qupollet         ###   ########.fr        #
+#    Updated: 2025/10/23 21:13:04 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,9 @@ SRC =	game/display_window.c \
 		game/game.c \
 		game/hooks.c \
 		game/load_textures.c \
+		images/free_imgs.c \
+		images/images_func.c \
+		images/images_init.c \
 		minimap/map_window.c \
 		parsing/backtracking.c \
 		parsing/gnl.c \
@@ -44,7 +47,6 @@ SRC =	game/display_window.c \
 		parsing/utils.c \
 		parsing/verif_utils.c \
 		utils/free_mem.c \
-		utils/images.c \
 		utils/printing.c \
 		utils/random.c \
 		cub3D.c \
@@ -79,6 +81,7 @@ ${OBJ_DIR}:
 	@echo "${YELLOW}📂 Creating directory ${OBJ_DIR}...${NC}"
 	@mkdir -p ${OBJ_DIR}
 	@mkdir -p ${OBJ_DIR}/game
+	@mkdir -p ${OBJ_DIR}/images
 	@mkdir -p ${OBJ_DIR}/minimap
 	@mkdir -p ${OBJ_DIR}/parsing
 	@mkdir -p ${OBJ_DIR}/utils

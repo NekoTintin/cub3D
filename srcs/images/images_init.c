@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   images.c                                           :+:      :+:    :+:   */
+/*   images_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 18:32:46 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/23 01:28:30 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/23 21:08:50 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,16 @@ t_img	*init_new_image(void *mlx_ptr, int w, int h)
 	return (new_img);
 }
 
-// NOT DEFINITIVE VERSION
-// A version with endianess handling will be made later
-void	put_pixel_to_img(t_img *img, int x, int y, int color)
+t_rect	*init_rectangle(int start_x, int start_y, int width, int height)
 {
-	char		*pix;
+	t_rect		*rect;
 
-	if (!img || !img->addr || x < 0
-		|| y < 0 || x >= img->width || y >= img->height)
-		return ;
-	pix = img->addr + (y * img->line_len + x * img->bytes_per_pixel);
-	*(int *)pix = color;
+	rect = ft_calloc(1, sizeof(t_rect));
+	if (!rect)
+		return (NULL);
+	rect->start_x = start_x;
+	rect->start_y = start_y;
+	rect->width = width;
+	rect->height = height;
+	return (rect);
 }

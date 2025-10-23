@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/23 00:04:33 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/23 21:11:38 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@
 # define MIDDLE_CLICK 2
 # define RIGHT_CLICK 3
 
-typedef struct s_wdata	t_wdata;
+typedef struct s_wdata		t_wdata;
+typedef struct s_map		t_map;
 
 // Pos -> player position
 // Dir -> player direction vector
@@ -79,25 +80,6 @@ typedef struct s_wdata
 	int				win_height;
 	int				tex_size;
 }					t_wdata;
-
-// Image struct
-// Needed to create a buffer
-// BPP = bits per pixel
-// endian is the order of bytes (0 = little endian, 1 = big endian) 
-// Do this because mlx_pixel_put is slow
-// DO NOT free img directly, use mlx_destroy_image
-// DO NOT free addr directly, it's managed by mlx
-typedef struct s_img
-{
-	void			*mlx_img;
-	char			*addr;
-	int				bpp;
-	int				line_len;
-	int				endian;
-	int				width;
-	int				height;
-	int				bytes_per_pixel;
-}					t_img;
 
 // display_window.c
 int			display_window(t_game *game);
