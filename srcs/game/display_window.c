@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:22:49 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/18 19:02:29 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/28 20:31:32 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_wdata	*create_win_data(void)
 	data = ft_calloc(1, sizeof(t_wdata));
 	if (!data)
 		return (NULL);
-	data->win_width = 1200;
-	data->win_height = 900;
+	data->win_width = WIN_WIDTH;
+	data->win_height = WIN_HEIGHT;
 	data->tex_size = 64;
 	return (data);
 }
@@ -39,7 +39,8 @@ int	display_window(t_game *game)
 	game->wdata->ptr = mlx_init();
 	if (!game->wdata->ptr)
 		return (ft_print_error("Failed to initialize MLX"), -1);
-	game->wdata->win = mlx_new_window(game->wdata->ptr, 1200, 900, "cub3D");
+	game->wdata->win = mlx_new_window(game->wdata->ptr, WIN_WIDTH,
+			WIN_HEIGHT, "cub3D");
 	if (!game->wdata->win)
 		return (free(game->wdata->ptr),
 			ft_print_error("Failed to create window"), -1);

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:19:03 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/23 21:04:39 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/28 20:18:33 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	free_tgame(t_game *game)
 {
 	if (!game)
 		return ;
+	if (game->minimap)
+		free_timg(game->minimap, game->wdata->ptr);
 	if (game->map)
 		free_tmap(game->map);
 	if (game->wdata)

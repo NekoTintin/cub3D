@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/10/23 21:13:04 by qupollet         ###   ########.fr        #
+#    Updated: 2025/10/28 20:49:42 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRC =	game/display_window.c \
 		images/free_imgs.c \
 		images/images_func.c \
 		images/images_init.c \
-		minimap/map_window.c \
+		minimap/mini_map.c \
+		minimap/print_minimap.c \
 		parsing/backtracking.c \
 		parsing/gnl.c \
 		parsing/map_read.c \
@@ -54,7 +55,7 @@ SRC =	game/display_window.c \
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC}}
 OBJECTS = ${addprefix ${OBJ_DIR}/, ${SRC:.c=.o}}
 
-CC = @cc
+CC = @gcc-14
 CFLAGS = -Wall -Wextra -Werror ${DEBUG}
 
 # Colours
@@ -94,7 +95,7 @@ ${LIBFT}:
 # Règle pour la compilation de minilibx
 ${MLX}:
 	@echo "${YELLOW}📦 Compiling minilibx...${NC}"
-	@make -C ${MLX_DIR}
+	@make CC=gcc-14 -C ${MLX_DIR}
 
 # Nettoyage des fichiers objets
 clean:

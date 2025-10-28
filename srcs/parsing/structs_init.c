@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:11:27 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/18 19:02:43 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/28 20:19:15 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_game	*init_game(t_map *map)
 	game->map = map;
 	game->wdata = NULL;
 	game->player = ft_calloc(1, sizeof(t_player));
+	game->minimap = NULL;
 	if (!game->player)
 		return (free(game), NULL);
 	init_tplayer(game->player, game->map);

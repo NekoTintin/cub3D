@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/23 21:11:38 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/28 20:30:54 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define GAME_H
 
 # include "cub3D.h"
+# include "images.h"
+
+// Window dimensions
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 800
 
 // Keycodes
 # define KEY_ESC 65307
@@ -57,6 +62,7 @@ typedef struct s_game
 	t_map			*map;
 	t_wdata			*wdata;
 	t_player		*player;
+	t_img			*minimap;
 }					t_game;
 
 // To hold textures and colors

@@ -6,24 +6,12 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 20:58:55 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/23 22:38:32 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/28 18:54:07 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-// NOT DEFINITIVE VERSION
-/*
-void	put_pixel_to_img(t_img *img, int x, int y, int color)
-{
-	char				*pix;
-
-	if (!img || !img->addr || x < 0
-		|| y < 0 || x >= img->width || y >= img->height)
-		return ;
-	pix = img->addr + (y * img->line_len + x * img->bytes_per_pixel);
-}
-*/
 void	put_pixel_to_img(t_img *img, int x, int y, int color)
 {
 	char				*pix;
