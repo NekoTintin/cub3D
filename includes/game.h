@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/28 20:30:54 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:34:49 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int			game_start(t_game *game);
 
 // hooks.c
 int			key_hook(int keycode, t_game *game);
-int			player_move(int keycode, t_wdata *data);
+int			player_move(int keycode, t_game *game);
 
 // load_textures.c
 t_textures	*create_tex_struct(void);

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 15:28:46 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/28 19:41:12 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:43:03 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,19 @@ int	key_hook(int keycode, t_game *game)
 		close_window(game);
 	}
 	else
-		player_move(keycode, game->wdata);
+		player_move(keycode, game);
 	return (0);
 }
 
-int	player_move(int keycode, t_wdata *data)
+int	player_move(int keycode, t_game *game)
 {
 	if (keycode == KEY_UP || keycode == KEY_W || keycode == KEY_Z)
-		ft_printf("Up arrow key pressed\n");
+		game->player->pos_y -= 1.0;
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
-		ft_printf("Down arrow key pressed\n");
+		game->player->pos_y += 1.0;
 	else if (keycode == KEY_LEFT || keycode == KEY_A)
-		ft_printf("Left arrow key pressed\n");
+		game->player->pos_x -= 1.0;
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
-		ft_printf("Right arrow key pressed\n");
-	(void)data;
+		game->player->pos_x += 1.0;
 	return (0);
 }

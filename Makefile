@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/10/28 20:49:42 by qupollet         ###   ########.fr        #
+#    Updated: 2025/10/29 17:48:57 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC =	game/display_window.c \
 		images/free_imgs.c \
 		images/images_func.c \
 		images/images_init.c \
+		minimap/map_to_char.c \
 		minimap/mini_map.c \
 		minimap/print_minimap.c \
 		parsing/backtracking.c \

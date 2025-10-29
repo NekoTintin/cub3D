@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:35:26 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/28 21:47:56 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/29 17:49:54 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINIMAP_H
 
 // Size + 2 for borders
-# define MINIMAP_WIDTH 242
+# define MINIMAP_WIDTH 222
 # define MINIMAP_HEIGHT 182
 # define MINIMAP_TILE_SIZE 20
 # define MINIMAP_MARGIN 15
@@ -26,6 +26,9 @@
 # define MINIMAP_PLAYER_COLOR 0xFF4500
 
 # include "cub3D.h"
+
+// map_to_char.c
+char	**map_to_char(t_game *game);
 
 // mini_map.c
 int		update_mini_map(t_game *game);
