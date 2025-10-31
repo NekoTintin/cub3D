@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 20:36:06 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/29 18:30:35 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:58:33 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ void	print_rect(t_img *img, int x, int y, int color)
 	return ;
 }
 
-static void	print_to_minimap(char **map_ref, t_img *img)
+static void	print_to_minimap(char **map_ref, t_img *img, double offset_x,
+			double offset_y)
 {
-	int		y;
-	int		x;
-	int		color;
+	int			y;
+	int			x;
+	int			color;
 
 	y = 0;
 	while (map_ref[y])
@@ -42,8 +43,9 @@ static void	print_to_minimap(char **map_ref, t_img *img)
 				color = MINIMAP_FLOOR_COLOR;
 			else
 				color = MINIMAP_EMPTY_COLOR;
-			print_rect(img, x * MINIMAP_TILE_SIZE,
-				y * MINIMAP_TILE_SIZE, color);
+			print_rect(img,
+				(int)((x - offset_x) * MINIMAP_TILE_SIZE),
+				(int)((y - offset_y) * MINIMAP_TILE_SIZE), color);
 			x++;
 		}
 		y++;
@@ -53,11 +55,16 @@ static void	print_to_minimap(char **map_ref, t_img *img)
 void	map_to_minimap(t_game *game)
 {
 	char	**map_rep;
+	double	offset_x;
+	double	offset_y;
 
 	map_rep = map_to_char(game);
 	if (!map_rep)
 		return ;
-	print_to_minimap(map_rep, game->minimap);
+	print_tab(map_rep);
+	offset_x = game->player->pos_x - floor(game->player->pos_x);
+	offset_y = game->player->pos_y - floor(game->player->pos_y);
+	print_to_minimap(map_rep, game->minimap, offset_x, offset_y);
 	free_tab(map_rep);
 	return ;
 }

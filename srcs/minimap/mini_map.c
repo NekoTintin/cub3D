@@ -6,23 +6,30 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 18:33:32 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/28 22:17:24 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/31 21:18:48 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+#include <stdio.h>
 
-static int	print_player_position(t_player *pos, t_img *img)
+static int	print_player_position(t_img *img, t_player *player)
 {
 	int			x;
 	int			y;
 	t_rect		*rect;
+	double		offset_x;
+	double		offset_y;
 
-	(void)pos;
-	x = 4;
-	y = 3;
-	rect = init_rectangle(x * MINIMAP_TILE_SIZE, y * MINIMAP_TILE_SIZE,
-			MINIMAP_TILE_SIZE, MINIMAP_TILE_SIZE);
+	offset_x = player->pos_x - 1 - floor(player->pos_x);
+	offset_y = player->pos_y - 1 - floor(player->pos_y);
+	x = (int)((((MINIMAP_WIDTH - 2) / MINIMAP_TILE_SIZE) / 2 - offset_x)
+			* MINIMAP_TILE_SIZE);
+	y = (int)((((MINIMAP_HEIGHT - 2) / MINIMAP_TILE_SIZE) / 2 - offset_y)
+			* MINIMAP_TILE_SIZE);
+	printf("t_player pos: (%.2f, %.2f)\n", player->pos_x, player->pos_y);
+	printf("Player minimap position: (%d, %d)\n", x, y);
+	rect = init_rectangle(x, y, MINIMAP_TILE_SIZE, MINIMAP_TILE_SIZE);
 	if (!rect)
 		return (-1);
 	put_rectangle_to_img(img, MINIMAP_PLAYER_COLOR, rect);
@@ -64,7 +71,7 @@ int	update_mini_map(t_game *game)
 	if (!game->minimap)
 		return (ft_print_error("Failed to create minimap image"), -1);
 	map_to_minimap(game);
-	print_player_position(game->player, game->minimap);
+	print_player_position(game->minimap, game->player);
 	draw_border(game->minimap);
 	map_pos_x = MINIMAP_MARGIN;
 	map_pos_y = WIN_HEIGHT - MINIMAP_HEIGHT - MINIMAP_MARGIN;

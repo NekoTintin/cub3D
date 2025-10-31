@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 22:20:53 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/29 18:37:00 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/30 00:18:54 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ char	**map_to_char(t_game *game)
 	int		width;
 	int		height;
 
-	width = (MINIMAP_WIDTH - 2) / MINIMAP_TILE_SIZE;
-	height = (MINIMAP_HEIGHT - 2) / MINIMAP_TILE_SIZE;
+	width = ((MINIMAP_WIDTH - 2) / MINIMAP_TILE_SIZE) + 2;
+	height = ((MINIMAP_HEIGHT - 2) / MINIMAP_TILE_SIZE) + 2;
 	map_rep = allocate_minimap(width, height);
 	if (!map_rep)
 		return (NULL);

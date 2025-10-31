@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/23 21:05:26 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/10/30 00:34:47 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 # include <fcntl.h>
+# include <math.h>
 # include "game.h"
 # include "images.h"
 # include "minimap.h"
