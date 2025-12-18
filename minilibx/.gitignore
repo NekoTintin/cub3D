@@ -1,5 +1,4 @@
 ## Mlx related
-Makefile.gen
 /test/mlx-test
 
 ## Editor
@@ -33,7 +32,6 @@ Makefile.gen
 
 # Libraries
 *.lib
-*.a
 *.la
 *.lo
 

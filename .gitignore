@@ -1,6 +1,7 @@
 // TO DO FOR INTRA
 *.o
 *.out
+objs
 cub3D
 LICENSE
 *.gch
