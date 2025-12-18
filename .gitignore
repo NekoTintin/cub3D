@@ -5,6 +5,5 @@ objs
 cub3D
 LICENSE
 *.gch
-*.a
 *.pl
 .vscode
