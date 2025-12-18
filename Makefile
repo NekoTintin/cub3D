@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/10/29 17:48:57 by qupollet         ###   ########.fr        #
+#    Updated: 2025/12/18 11:15:31 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,8 @@ SRC =	game/display_window.c \
 		parsing/structs_init.c \
 		parsing/utils.c \
 		parsing/verif_utils.c \
+		rendering/raycasting.c \
+		rendering/render.c \
 		utils/free_mem.c \
 		utils/printing.c \
 		utils/random.c \
@@ -87,6 +89,7 @@ ${OBJ_DIR}:
 	@mkdir -p ${OBJ_DIR}/minimap
 	@mkdir -p ${OBJ_DIR}/parsing
 	@mkdir -p ${OBJ_DIR}/utils
+	@mkdir -p ${OBJ_DIR}/rendering
 
 # Règle pour la compilation de la libft
 ${LIBFT}:
