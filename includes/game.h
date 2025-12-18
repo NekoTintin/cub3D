@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/29 18:34:49 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/18 11:33:50 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "cub3D.h"
 # include "images.h"
+# include "rendering.h"
 
 // Window dimensions
 # define WIN_WIDTH 1200
@@ -63,18 +64,8 @@ typedef struct s_game
 	t_wdata			*wdata;
 	t_player		*player;
 	t_img			*minimap;
+	t_ray			*ray;
 }					t_game;
-
-// To hold textures and colors
-typedef struct s_textures
-{
-	void			*north_tex;
-	void			*south_tex;
-	void			*west_tex;
-	void			*east_tex;
-	int				ceiling_color;
-	int				floor_color;
-}					t_textures;
 
 // window_data struct
 typedef struct s_wdata
@@ -97,10 +88,5 @@ int			game_start(t_game *game);
 // hooks.c
 int			key_hook(int keycode, t_game *game);
 int			player_move(int keycode, t_game *game);
-
-// load_textures.c
-t_textures	*create_tex_struct(void);
-int			load_textures(t_game *game);
-void		free_textures(t_textures *textures, void *ptr);
 
 #endif
