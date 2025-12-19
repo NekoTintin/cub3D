@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 18:33:32 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/19 16:00:43 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/19 17:19:03 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static int	print_player_position(t_img *img, t_player *player)
 			* MINIMAP_TILE_SIZE);
 	y = (int)((((MINIMAP_HEIGHT - 2) / MINIMAP_TILE_SIZE) / 2 - offset_y)
 			* MINIMAP_TILE_SIZE);
-	printf("t_player pos: (%.2f, %.2f)\n", player->pos_x, player->pos_y); //DEBUG
-	printf("Player minimap position: (%d, %d)\n", x, y); //DEBUG
 	rect = init_rectangle(x, y, MINIMAP_TILE_SIZE, MINIMAP_TILE_SIZE);
 	if (!rect)
 		return (-1);
@@ -66,6 +64,8 @@ int	update_mini_map(t_game *game)
 	int			map_pos_x;
 	int			map_pos_y;
 
+	if (game->minimap)
+		free_timg(game->minimap, game->wdata->ptr);
 	game->minimap = init_new_image(game->wdata->ptr,
 			MINIMAP_WIDTH, MINIMAP_HEIGHT);
 	if (!game->minimap)

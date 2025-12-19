@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 22:20:53 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/19 16:08:45 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:31:10 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,5 @@ char	**map_to_char(t_game *game)
 	if (!map_rep)
 		return (NULL);
 	fill_map(&map_rep, game, width, height);
-	print_tab(map_rep); //DEBUG
 	return (map_rep);
 }
