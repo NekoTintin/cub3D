@@ -32,11 +32,10 @@ DEBUG = -g3
 SRC =	game/display_window.c \
 		game/game.c \
 		game/hooks.c \
-		game/load_textures.c \
 		images/free_imgs.c \
 		images/images_func.c \
 		images/images_init.c \
-		minimap/map_to_char.c \
+		minimap/cut_minimap.c \
 		minimap/mini_map.c \
 		minimap/print_minimap.c \
 		parsing/backtracking.c \
@@ -48,6 +47,7 @@ SRC =	game/display_window.c \
 		parsing/structs_init.c \
 		parsing/utils.c \
 		parsing/verif_utils.c \
+		rendering/load_textures.c \
 		rendering/raycasting.c \
 		rendering/render.c \
 		utils/free_mem.c \
@@ -58,7 +58,7 @@ SRC =	game/display_window.c \
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC}}
 OBJECTS = ${addprefix ${OBJ_DIR}/, ${SRC:.c=.o}}
 
-CC = @gcc-14
+CC = @gcc
 CFLAGS = -Wall -Wextra -Werror ${DEBUG}
 
 # Colours
@@ -99,7 +99,7 @@ ${LIBFT}:
 # Règle pour la compilation de minilibx
 ${MLX}:
 	@echo "${YELLOW}📦 Compiling minilibx...${NC}"
-	@make CC=gcc-14 -C ${MLX_DIR}
+	@make CC=gcc -C ${MLX_DIR}
 
 # Nettoyage des fichiers objets
 clean:

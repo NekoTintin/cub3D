@@ -26,6 +26,7 @@
 # include "images.h"
 # include "minimap.h"
 # include "parsing.h"
+# include "rendering.h"
 
 // utils.c
 // free_mem.c

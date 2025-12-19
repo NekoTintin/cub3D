@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"a
+#include "../../includes/cub3D.h"
 
 // Reminder
 // MINIMAP_WIDTH = 222

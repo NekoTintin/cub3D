@@ -13,24 +13,24 @@
 #include "../../includes/cub3D.h"
 #include <stdio.h>
 
-void	init_texture_pixels(t_game *game)
-{
-	int	i;
+// void	init_texture_pixels(t_game *game)
+// {
+// 	int	i;
 
-	game->texture_pixels = ft_calloc(game->wdata->win_height + 1,
-			sizeof * game->texture_pixels);
-	if (!game->texture_pixels)
-		exit(0);
-	i = 0;
-	while (i < game->wdata->win_height)
-	{
-		game->texture_pixels[i] = ft_calloc(game->wdata->win_width + 1,
-				sizeof * game->texture_pixels);
-		if (!game->texture_pixels[i])
-			exit(0);
-		i++;
-	}
-}
+// 	game->texture_pixels = ft_calloc(game->wdata->win_height + 1,
+// 			sizeof * game->texture_pixels);
+// 	if (!game->texture_pixels)
+// 		exit(0);
+// 	i = 0;
+// 	while (i < game->wdata->win_height)
+// 	{
+// 		game->texture_pixels[i] = ft_calloc(game->wdata->win_width + 1,
+// 				sizeof * game->texture_pixels);
+// 		if (!game->texture_pixels[i])
+// 			exit(0);
+// 		i++;
+// 	}
+// }
 
 void	init_ray(t_ray *ray)
 {
@@ -55,7 +55,7 @@ void	init_ray(t_ray *ray)
 
 static void	render_raycast(t_game *game)
 {
-	init_texture_pixels(game);
+	// init_texture_pixels(game);
 	init_ray(&game->ray);
 	raycasting(game->player, game);
 	// render_frame(game);

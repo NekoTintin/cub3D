@@ -64,7 +64,7 @@ typedef struct s_game
 	t_wdata			*wdata;
 	t_player		*player;
 	t_img			*minimap;
-	t_ray			*ray;
+	t_ray			ray;
 }					t_game;
 
 // window_data struct

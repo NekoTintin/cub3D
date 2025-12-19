@@ -3,6 +3,9 @@
 
 # include "cub3D.h"
 
+typedef struct s_game		t_game;
+typedef struct s_player		t_player;
+
 // Raycasting struct
 typedef struct s_ray
 {
