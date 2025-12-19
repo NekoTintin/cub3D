@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 22:20:53 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/30 00:18:54 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:08:45 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void	fill_map(char ***map, t_game *game, int width, int height)
 		i = 0;
 		while (i < width)
 		{
-			my = game->player->pos_y - (height / 2) + j;
-			mx = game->player->pos_x - (width / 2) + i;
+			my = ((int)floor(game->player->pos_y) - (height / 2)) + j;
+			mx = ((int)floor(game->player->pos_x) - (width / 2)) + i;
 			if (my < 0 || mx < 0 || my >= game->map->height
 				|| mx >= game->map->width)
 				map_ref[j][i] = '.';
@@ -76,5 +76,6 @@ char	**map_to_char(t_game *game)
 	if (!map_rep)
 		return (NULL);
 	fill_map(&map_rep, game, width, height);
+	print_tab(map_rep); //DEBUG
 	return (map_rep);
 }

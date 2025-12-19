@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/29 18:34:49 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:17:27 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@
 # define LEFT_CLICK 1
 # define MIDDLE_CLICK 2
 # define RIGHT_CLICK 3
+
+// Player stats
+# define PLAYER_MOVE_SPEED 0.1
 
 typedef struct s_wdata		t_wdata;
 typedef struct s_map		t_map;

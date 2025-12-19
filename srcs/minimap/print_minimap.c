@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 20:36:06 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/31 17:58:33 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:19:58 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	print_to_minimap(char **map_ref, t_img *img, double offset_x,
 			else
 				color = MINIMAP_EMPTY_COLOR;
 			print_rect(img,
-				(int)((x - offset_x) * MINIMAP_TILE_SIZE),
-				(int)((y - offset_y) * MINIMAP_TILE_SIZE), color);
+				(int)floor(((double)x - offset_x) * MINIMAP_TILE_SIZE),
+				(int)floor(((double)y - offset_y) * MINIMAP_TILE_SIZE), color);
 			x++;
 		}
 		y++;
@@ -61,7 +61,6 @@ void	map_to_minimap(t_game *game)
 	map_rep = map_to_char(game);
 	if (!map_rep)
 		return ;
-	print_tab(map_rep);
 	offset_x = game->player->pos_x - floor(game->player->pos_x);
 	offset_y = game->player->pos_y - floor(game->player->pos_y);
 	print_to_minimap(map_rep, game->minimap, offset_x, offset_y);
