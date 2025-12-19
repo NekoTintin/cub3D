@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/19 16:17:27 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/19 17:51:16 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ typedef struct s_textures
 	void			*south_tex;
 	void			*west_tex;
 	void			*east_tex;
-	int				ceiling_color;
-	int				floor_color;
+	int				ceiling_color[3];
+	int				floor_color[3];
 }					t_textures;
 
 // window_data struct
@@ -104,6 +104,5 @@ int			player_move(int keycode, t_game *game);
 // load_textures.c
 t_textures	*create_tex_struct(void);
 int			load_textures(t_game *game);
-void		free_textures(t_textures *textures, void *ptr);
 
 #endif
