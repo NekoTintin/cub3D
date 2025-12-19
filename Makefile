@@ -59,7 +59,7 @@ SRCS = ${addprefix ${SRC_DIR}/, ${SRC}}
 OBJECTS = ${addprefix ${OBJ_DIR}/, ${SRC:.c=.o}}
 
 CC = @gcc
-CFLAGS = -Wall -Wextra -Werror ${DEBUG}
+CFLAGS = ${DEBUG}
 
 # Colours
 RED = \033[0;91m

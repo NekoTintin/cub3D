@@ -19,7 +19,7 @@
 
 // Window dimensions
 # define WIN_WIDTH 1200
-# define WIN_HEIGHT 800
+# define WIN_HEIGHT 600
 
 // Keycodes
 # define KEY_ESC 65307
@@ -64,6 +64,7 @@ typedef struct s_game
 	t_wdata			*wdata;
 	t_player		*player;
 	t_img			*minimap;
+	t_img			*camera;
 	t_ray			ray;
 }					t_game;
 

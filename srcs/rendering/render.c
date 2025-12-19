@@ -61,7 +61,36 @@ static void	render_raycast(t_game *game)
 	// render_frame(game);
 }
 
+void render_ceiling_floor(t_game *game)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < WIN_HEIGHT)
+	{
+		x = 0;
+		while (x < WIN_WIDTH)
+		{
+			if (y > WIN_HEIGHT/2)
+				put_pixel_to_img(game->camera, x, y, MINIMAP_EMPTY_COLOR);
+			else
+				put_pixel_to_img(game->camera, x, y, MINIMAP_FLOOR_COLOR);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	render(t_game *game)
 {
-	render_raycast(game);
+	game->camera = init_new_image(game->wdata->ptr,
+			WIN_WIDTH, WIN_HEIGHT);
+	render_ceiling_floor(game);
+	if(!game->camera)
+	exit(0);
+	mlx_put_image_to_window(game->wdata->ptr, game->wdata->win,
+		game->camera->mlx_img,1,1);
+	// render_raycast(game);
+
 }
