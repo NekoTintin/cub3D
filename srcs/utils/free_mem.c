@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:19:03 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/19 17:51:51 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/19 18:29:53 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	free_wdata(t_wdata *data)
 		free(data->ptr);
 		data->ptr = NULL;
 	}
+	free_textures(data->textures, data->ptr);
 	free(data);
 }
 

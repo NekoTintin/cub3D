@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 13:43:01 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/19 17:50:59 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/19 18:27:46 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,19 @@ static int	check_texture_loaded(t_game *game)
 
 int	load_textures(t_game *game)
 {
+	(void)game;
 	get_colours_from_parsing(game);
 	game->wdata->textures->north_tex = mlx_xpm_file_to_image(game->wdata->ptr,
-			game->map->north, &game->wdata->tex_size,
-			&game->wdata->tex_size);
+		game->map->north, &game->wdata->tex_size,
+		&game->wdata->tex_size);
 	game->wdata->textures->south_tex = mlx_xpm_file_to_image(game->wdata->ptr,
-			game->map->south, &game->wdata->tex_size,
-			&game->wdata->tex_size);
+		game->map->south, &game->wdata->tex_size,
+		&game->wdata->tex_size);
 	game->wdata->textures->west_tex = mlx_xpm_file_to_image(game->wdata->ptr,
-			game->map->west, &game->wdata->tex_size,
-			&game->wdata->tex_size);
+		game->map->west, &game->wdata->tex_size,
+		&game->wdata->tex_size);
 	game->wdata->textures->east_tex = mlx_xpm_file_to_image(game->wdata->ptr,
-			game->map->east, &game->wdata->tex_size,
-			&game->wdata->tex_size);
+		game->map->east, &game->wdata->tex_size,
+		&game->wdata->tex_size);
 	return (check_texture_loaded(game));
 }

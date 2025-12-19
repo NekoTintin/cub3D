@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:22:49 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/28 20:31:32 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/19 18:25:17 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ t_wdata	*create_win_data(void)
 	data = ft_calloc(1, sizeof(t_wdata));
 	if (!data)
 		return (NULL);
+	data->ptr = NULL;
+	data->win = NULL;
 	data->win_width = WIN_WIDTH;
 	data->win_height = WIN_HEIGHT;
-	data->tex_size = 64;
+	data->tex_size = 128;
+	data->textures = create_tex_struct();
+	if (!data->textures)
+		return (free(data), NULL);
 	return (data);
 }
 
