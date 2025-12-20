@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:19:03 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/28 20:18:33 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/19 18:29:53 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,33 @@ void	free_wdata(t_wdata *data)
 		free(data->ptr);
 		data->ptr = NULL;
 	}
+	free_textures(data->textures, data->ptr);
 	free(data);
+}
+
+void	free_textures(t_textures *textures, void *ptr)
+{
+	if (!textures)
+		return ;
+	if (textures->north_tex)
+	{
+		mlx_destroy_image(ptr, textures->north_tex);
+		textures->north_tex = NULL;
+	}
+	if (textures->south_tex)
+	{
+		mlx_destroy_image(ptr, textures->south_tex);
+		textures->south_tex = NULL;
+	}
+	if (textures->west_tex)
+	{
+		mlx_destroy_image(ptr, textures->west_tex);
+		textures->west_tex = NULL;
+	}
+	if (textures->east_tex)
+	{
+		mlx_destroy_image(ptr, textures->east_tex);
+		textures->east_tex = NULL;
+	}
+	free(textures);
 }

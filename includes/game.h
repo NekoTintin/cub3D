@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/18 11:33:50 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/20 07:03:52 by jmondela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@
 # define MIDDLE_CLICK 2
 # define RIGHT_CLICK 3
 
+// Player stats
+# define PLAYER_MOVE_SPEED 0.1
+
 typedef struct s_wdata		t_wdata;
 typedef struct s_map		t_map;
 
@@ -68,6 +71,17 @@ typedef struct s_game
 	t_ray			ray;
 }					t_game;
 
+// To hold textures and colors
+typedef struct s_textures
+{
+	void			*north_tex;
+	void			*south_tex;
+	void			*west_tex;
+	void			*east_tex;
+	int				ceiling_color[3];
+	int				floor_color[3];
+}					t_textures;
+
 // window_data struct
 typedef struct s_wdata
 {
@@ -89,5 +103,9 @@ int			game_start(t_game *game);
 // hooks.c
 int			key_hook(int keycode, t_game *game);
 int			player_move(int keycode, t_game *game);
+
+// load_textures.c
+t_textures	*create_tex_struct(void);
+int			load_textures(t_game *game);
 
 #endif
