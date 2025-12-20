@@ -45,6 +45,7 @@ typedef struct s_ray
 	int		draw_start;
 	int		draw_end;
 }				t_ray;
+
 // To hold textures and colors
 typedef struct s_textures
 {
