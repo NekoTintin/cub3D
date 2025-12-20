@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:11:27 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/28 20:19:15 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/20 08:41:30 by jmondela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	init_tplayer(t_player *player, t_map *map)
 	player->pos_x = map->start_x;
 	player->pos_y = map->start_y;
 	player->dir_x = 0;
-	player->dir_y = 0;
-	player->plane_x = 0;
+	player->dir_y = -1;
+	player->plane_x = 0.66;
 	player->plane_y = 0;
+	ft_printf("init %d\n",player->plane_x);
 }

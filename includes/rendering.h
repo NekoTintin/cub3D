@@ -30,10 +30,10 @@ typedef struct s_ray
 // To hold textures and colors
 typedef struct s_textures
 {
-	void			*north_tex;
-	void			*south_tex;
-	void			*west_tex;
-	void			*east_tex;
+	int			*north_tex;
+	int			*south_tex;
+	int			*west_tex;
+	int			*east_tex;
 	int				ceiling_color[3];
 	int				floor_color[3];
 }					t_textures;
@@ -41,6 +41,7 @@ typedef struct s_textures
 void		render(t_game *game);
 void		init_ray(t_ray *ray);
 int			raycasting(t_player *player, t_game *game);
+void		draw(t_game *game, t_textures *tex, t_ray *ray, int x);
 
 // load_textures.c
 t_textures	*create_tex_struct(void);

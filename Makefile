@@ -6,7 +6,7 @@
 #    By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/12/20 07:08:30 by jmondela         ###   ########.fr        #
+#    Updated: 2025/12/20 07:50:27 by jmondela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC =	game/display_window.c \
 		rendering/load_textures.c \
 		rendering/raycasting.c \
 		rendering/render.c \
+		rendering/drawing.c \
 		utils/free_mem.c \
 		utils/printing.c \
 		utils/random_func.c \

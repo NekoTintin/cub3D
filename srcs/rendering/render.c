@@ -6,7 +6,7 @@
 /*   By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:36:23 by jmondela          #+#    #+#             */
-/*   Updated: 2025/12/16 17:40:22 by jmondela         ###   ########.fr       */
+/*   Updated: 2025/12/20 08:20:28 by jmondela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,8 @@ void	init_ray(t_ray *ray)
 
 static void	render_raycast(t_game *game)
 {
-	// init_texture_pixels(game);
 	init_ray(&game->ray);
 	raycasting(game->player, game);
-	// render_frame(game);
 }
 
 void render_ceiling_floor(t_game *game)
@@ -88,9 +86,9 @@ void	render(t_game *game)
 			WIN_WIDTH, WIN_HEIGHT);
 	render_ceiling_floor(game);
 	if(!game->camera)
-	exit(0);
+		exit(0);
+	render_raycast(game);
 	mlx_put_image_to_window(game->wdata->ptr, game->wdata->win,
 		game->camera->mlx_img,1,1);
-	// render_raycast(game);
 
 }
