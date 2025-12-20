@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:36:23 by jmondela          #+#    #+#             */
-/*   Updated: 2025/12/20 16:09:18 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/20 17:06:22 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,15 @@ void render_ceiling_floor(t_game *game)
 		while (x < WIN_WIDTH)
 		{
 			if (y > WIN_HEIGHT/2)
-				put_pixel_to_img(game->camera, x, y, MINIMAP_EMPTY_COLOR);
+				put_pixel_to_img(game->camera, x, y,
+					game->wdata->textures->floor_color[0] << 16
+					| game->wdata->textures->floor_color[1] << 8
+					| game->wdata->textures->floor_color[2]);
 			else
-				put_pixel_to_img(game->camera, x, y, MINIMAP_FLOOR_COLOR);
+				put_pixel_to_img(game->camera, x, y,
+					game->wdata->textures->ceiling_color[0] << 16
+					| game->wdata->textures->ceiling_color[1] << 8
+					| game->wdata->textures->ceiling_color[2]);
 			x++;
 		}
 		y++;
@@ -89,6 +95,6 @@ void	render(t_game *game)
 		exit(0);
 	render_raycast(game);
 	mlx_put_image_to_window(game->wdata->ptr, game->wdata->win,
-		game->camera->mlx_img,1,1);
+		game->camera->mlx_img,0,0);
 
 }
