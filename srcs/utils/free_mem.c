@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:19:03 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/19 18:29:53 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:08:23 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	free_tgame(t_game *game)
 {
 	if (!game)
 		return ;
+	if (game->camera)
+		free_timg(game->camera, game->wdata->ptr);
 	if (game->minimap)
 		free_timg(game->minimap, game->wdata->ptr);
 	if (game->map)
@@ -57,6 +59,7 @@ void	free_wdata(t_wdata *data)
 {
 	if (!data)
 		return ;
+	free_textures(data->textures, data->ptr);
 	if (data->win)
 	{
 		mlx_destroy_window(data->ptr, data->win);
@@ -68,7 +71,6 @@ void	free_wdata(t_wdata *data)
 		free(data->ptr);
 		data->ptr = NULL;
 	}
-	free_textures(data->textures, data->ptr);
 	free(data);
 }
 
@@ -78,22 +80,22 @@ void	free_textures(t_textures *textures, void *ptr)
 		return ;
 	if (textures->north_tex)
 	{
-		mlx_destroy_image(ptr, textures->north_tex);
+		free_timg(textures->north_tex, ptr);
 		textures->north_tex = NULL;
 	}
 	if (textures->south_tex)
 	{
-		mlx_destroy_image(ptr, textures->south_tex);
+		free_timg(textures->south_tex, ptr);
 		textures->south_tex = NULL;
 	}
 	if (textures->west_tex)
 	{
-		mlx_destroy_image(ptr, textures->west_tex);
+		free_timg(textures->west_tex, ptr);
 		textures->west_tex = NULL;
 	}
 	if (textures->east_tex)
 	{
-		mlx_destroy_image(ptr, textures->east_tex);
+		free_timg(textures->east_tex, ptr);
 		textures->east_tex = NULL;
 	}
 	free(textures);

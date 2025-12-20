@@ -42,9 +42,8 @@ void	draw(t_game *game, t_textures *tex, t_ray *ray, int x)
 		position += step;
 
 		// if (wich_tex == 0)
-			// color = tex->north_tex[64 * tex_y + tex_x];
+		color = tex->north_tex->addr[tex_y * tex->north_tex->line_len + tex_x];
 
-		color = MINIMAP_PLAYER_COLOR;
 		put_pixel_to_img(game->camera, x, y, color);
 		// if (tex->index == NORTH || tex->index == EAST)
 		// 	color = (color >> 1) & 8355711;

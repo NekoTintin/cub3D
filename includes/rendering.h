@@ -1,5 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rendering.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/20 15:45:58 by qupollet          #+#    #+#             */
+/*   Updated: 2025/12/20 15:53:39 by qupollet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RENDERING_H
 # define RENDERING_H
+
+
+#include <stdio.h> // To remove later --- IGNORE ---
+
+
+# define TEXTURE_SIZE 128
 
 # include "cub3D.h"
 
@@ -30,13 +48,13 @@ typedef struct s_ray
 // To hold textures and colors
 typedef struct s_textures
 {
-	int			*north_tex;
-	int			*south_tex;
-	int			*west_tex;
-	int			*east_tex;
-	int				ceiling_color[3];
-	int				floor_color[3];
-}					t_textures;
+	t_img		*north_tex;
+	t_img		*south_tex;
+	t_img		*west_tex;
+	t_img		*east_tex;
+	int			ceiling_color[3];
+	int			floor_color[3];
+}				t_textures;
 
 void		render(t_game *game);
 void		init_ray(t_ray *ray);

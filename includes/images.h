@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 20:54:08 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/23 21:08:52 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:06:12 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void				free_rectangle(t_rect *rect);
 
 // images_init.c
 t_img				*init_new_image(void *mlx_ptr, int w, int h);
+t_img				*load_from_xpm(char *filename, void *ptr,
+						int *w, int *h);
 t_rect				*init_rectangle(int start_x, int start_y, int width,
 						int height);
 

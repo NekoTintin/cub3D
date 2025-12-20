@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:36:28 by jmondela          #+#    #+#             */
-/*   Updated: 2025/12/20 08:37:31 by jmondela         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:09:55 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ static void	setup_raycasting_info(int x, t_ray *ray, t_player *player)
 	ray->map_y = (int)player->pos_y;
 	ray->deltadist_x = fabs(1 / ray->dir_x);
 	ray->deltadist_y = fabs(1 / ray->dir_y);
-	printf("%f\n",ray->dir_x);
-	printf("%f\n",ray->dir_y);
+
 
 }
 

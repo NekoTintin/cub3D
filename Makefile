@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+         #
+#    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/12/20 07:50:27 by jmondela         ###   ########.fr        #
+#    Updated: 2025/12/20 15:52:41 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ ${LIBFT}:
 # Règle pour la compilation de minilibx
 ${MLX}:
 	@echo "${YELLOW}📦 Compiling minilibx...${NC}"
-	@make CC=gcc -C ${MLX_DIR}
+	@make -C ${MLX_DIR}
 
 # Nettoyage des fichiers objets
 clean:
