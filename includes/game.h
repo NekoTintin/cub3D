@@ -6,7 +6,7 @@
 /*   By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/20 07:03:52 by jmondela         ###   ########.fr       */
+/*   Updated: 2025/12/20 07:07:29 by jmondela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,6 @@ typedef struct s_game
 	t_ray			ray;
 }					t_game;
 
-// To hold textures and colors
-typedef struct s_textures
-{
-	void			*north_tex;
-	void			*south_tex;
-	void			*west_tex;
-	void			*east_tex;
-	int				ceiling_color[3];
-	int				floor_color[3];
-}					t_textures;
 
 // window_data struct
 typedef struct s_wdata

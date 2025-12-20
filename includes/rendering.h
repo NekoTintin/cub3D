@@ -27,7 +27,6 @@ typedef struct s_ray
 	int		draw_start;
 	int		draw_end;
 }				t_ray;
-
 // To hold textures and colors
 typedef struct s_textures
 {
@@ -35,8 +34,8 @@ typedef struct s_textures
 	void			*south_tex;
 	void			*west_tex;
 	void			*east_tex;
-	int				ceiling_color;
-	int				floor_color;
+	int				ceiling_color[3];
+	int				floor_color[3];
 }					t_textures;
 
 void		render(t_game *game);

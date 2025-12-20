@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
+#    By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/12/18 11:15:31 by qupollet         ###   ########.fr        #
+#    Updated: 2025/12/20 07:08:30 by jmondela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ SRC =	game/display_window.c \
 		rendering/render.c \
 		utils/free_mem.c \
 		utils/printing.c \
-		utils/random.c \
+		utils/random_func.c \
 		cub3D.c \
 
 SRCS = ${addprefix ${SRC_DIR}/, ${SRC}}
