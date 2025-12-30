@@ -19,7 +19,7 @@
 
 // Window dimensions
 # define WIN_WIDTH 1200
-# define WIN_HEIGHT 600
+# define WIN_HEIGHT 800
 
 // Keycodes
 # define KEY_ESC 65307

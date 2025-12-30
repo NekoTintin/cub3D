@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:36:28 by jmondela          #+#    #+#             */
-/*   Updated: 2025/12/20 16:09:55 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:42:09 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,12 @@ static void	setup_raycasting_info(int x, t_ray *ray, t_player *player)
 {
 	init_ray2(ray);
 	ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
-	ray->dir_x = player->dir_x + (-0.66) * ray->camera_x;
-	ray->dir_y = player->dir_y + (-1) * ray->camera_x;
+	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
+	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
 	ray->deltadist_x = fabs(1 / ray->dir_x);
 	ray->deltadist_y = fabs(1 / ray->dir_y);
-
-
 }
 
 static void	setup_dda(t_ray *ray, t_player *player)

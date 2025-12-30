@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 15:28:46 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/19 17:22:03 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/30 15:39:27 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == KEY_ESC)
 	{
 		ft_printf("Escape key pressed, exiting...\n");
+		ft_printf("Goodbye!\n");
 		close_window(game);
 	}
 	else
@@ -34,6 +35,6 @@ int	player_move(int keycode, t_game *game)
 		game->player->pos_x -= PLAYER_MOVE_SPEED;
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		game->player->pos_x += PLAYER_MOVE_SPEED;
-	update_mini_map(game);
+	render(game);
 	return (0);
 }

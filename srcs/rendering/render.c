@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:36:23 by jmondela          #+#    #+#             */
-/*   Updated: 2025/12/20 17:06:22 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/23 10:18:31 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ void	render(t_game *game)
 	game->camera = init_new_image(game->wdata->ptr,
 			WIN_WIDTH, WIN_HEIGHT);
 	render_ceiling_floor(game);
-	if(!game->camera)
+	if (!game->camera)
 		exit(0);
 	render_raycast(game);
 	mlx_put_image_to_window(game->wdata->ptr, game->wdata->win,
 		game->camera->mlx_img,0,0);
-
+	update_mini_map(game);
 }
