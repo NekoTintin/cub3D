@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 23:53:33 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/14 13:53:51 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/30 16:28:47 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,17 @@
 static int	is_valid_color(char *color_str)
 {
 	int		color;
+	int		i;
 
+	if (!color_str || !*color_str)
+		return (0);
+	i = 0;
+	while (color_str[i])
+	{
+		if (!ft_isdigit(color_str[i]))
+			return (0);
+		i++;
+	}
 	color = ft_atoi(color_str);
 	if (color < 0 || color > 255)
 		return (0);
@@ -51,25 +61,16 @@ static int	assign_colors(t_map *map, char *line)
 	char		type;
 
 	type = line[0];
+	if ((type == 'F' && map->floor[0] != -1)
+		|| (type == 'C' && map->ceiling[0] != -1))
+		return (ft_print_error("Duplicate color definition"), -1);
 	colors = ft_split(line + 2, ',');
 	if (!colors || !colors[0] || !colors[1] || !colors[2] || colors[3])
 		return (free_tab(colors), ft_print_error("Invalid color line"), -1);
 	if (is_valid_color(colors[0]) == 0 || is_valid_color(colors[1]) == 0
 		|| is_valid_color(colors[2]) == 0)
 		return (free_tab(colors), ft_print_error("Color are not valid"), -1);
-	if (type == 'F')
-	{
-		map->floor[0] = ft_atoi(colors[0]);
-		map->floor[1] = ft_atoi(colors[1]);
-		map->floor[2] = ft_atoi(colors[2]);
-	}
-	else if (type == 'C')
-	{
-		map->ceiling[0] = ft_atoi(colors[0]);
-		map->ceiling[1] = ft_atoi(colors[1]);
-		map->ceiling[2] = ft_atoi(colors[2]);
-	}
-	else
+	if (set_colors(map, colors, type) == -1)
 		return (free_tab(colors), ft_print_error("Invalid color type"), -1);
 	return (free_tab(colors), 0);
 }

@@ -27,6 +27,8 @@ int	allocate_textures(t_map *map, char **splited)
 		target = &map->east;
 	else
 		return (ft_print_error("Invalid texture type"), -1);
+	if (*target != NULL)
+		return (ft_print_error("Duplicate texture definition"), -1);
 	*target = ft_strdup(splited[1]);
 	if (!*target)
 		return (

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/20 16:22:26 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/30 16:30:18 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,19 @@ t_game		*ft_parsing(const char *file);
 // read_paths.c and read_paths2.c
 int			are_paths_valid(t_map *map, char *file);
 int			allocate_textures(t_map *map, char **splited);
+int			set_colors(t_map *map, char **colors, char type);
 
 // structs_init.c
 t_map		*init_tmap(void);
 t_game		*init_game(t_map *map);
 void		init_tplayer(t_player *player, t_map *map);
 
-// utils.c
+// utils.c and utils2.c
 int			get_map_start_line(char *file);
 int			buffer_iterator(int fd, char *file);
 int			get_map_size(char *file, t_map *map);
 int			allocate_map(t_map *map);
+int			is_map_line(char *line);
 
 // verifs_utils.c
 int			is_start_pos(t_map *map, char *cell, int x, int y);

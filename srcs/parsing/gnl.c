@@ -111,7 +111,7 @@ char	*gnl(int fd)
 	static char		*stash;
 	char			*line;
 
-	if (fd <= 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (free(stash), stash = NULL, NULL);
 	if (ft_init(&stash, &buf) == -1)
 		return (NULL);

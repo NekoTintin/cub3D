@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:11:27 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/23 05:34:34 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/30 15:53:03 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,4 @@ void	init_tplayer(t_player *player, t_map *map)
 	player->dir_y = -1;
 	player->plane_x = 0.66;
 	player->plane_y = 0;
-	ft_printf("init %d\n", player->plane_x);
 }

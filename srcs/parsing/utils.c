@@ -6,37 +6,26 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/01 23:07:56 by qupollet         ###   ########.fr       */
+/*   Updated: 2025/12/30 16:40:23 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-static int	is_map_line(char *line)
+// Return: 1 = found start, -1 = error, 0 = continue
+static int	process_line(char *line, int *map_started)
 {
-	int		idx;
-	int		has_map_char;
-
-	idx = 0;
-	has_map_char = 0;
-	if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0
-		|| ft_strncmp(line, "WE ", 3) == 0 || ft_strncmp(line, "EA ", 3) == 0
-		|| ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0)
-		return (0);
-	if (line[0] == '\n' || line[0] == '\0')
-		return (0);
-	while (line[idx])
+	if (is_map_line(line) == 1)
 	{
-		if (line[idx] != ' ' && line[idx] != '0' && line[idx] != '1'
-			&& line[idx] != 'N' && line[idx] != 'S'
-			&& line[idx] != 'E' && line[idx] != 'W')
-			return (0);
-		if (line[idx] == '1' || line[idx] == 'N' || line[idx] == 'S'
-			|| line[idx] == 'E' || line[idx] == 'W' || line[idx] == '0')
-			has_map_char = 1;
-		idx++;
+		if (!*map_started)
+			return (1);
+		*map_started = 1;
 	}
-	return (has_map_char);
+	else if (*map_started && (line[0] == '\0' || line[0] == '\n'))
+		return (ft_print_error("Empty line in map"), -1);
+	else if (*map_started)
+		return (ft_print_error("Non-map content after map"), -1);
+	return (0);
 }
 
 // Map are stored at the end of the file
@@ -46,27 +35,28 @@ int	get_map_start_line(char *file)
 	int		fd;
 	char	*line;
 	int		line_counter;
+	int		map_started;
+	int		result;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (-1);
 	line_counter = 0;
+	map_started = 0;
 	line = gnl(fd);
 	while (line)
 	{
 		remove_newline(line);
-		if (is_map_line(line) == 1)
-		{
-			free(line);
-			close(fd);
-			return (line_counter);
-		}
+		result = process_line(line, &map_started);
+		if (result == 1)
+			return (free(line), close(fd), line_counter);
+		if (result == -1)
+			return (free(line), close(fd), -1);
 		line_counter++;
 		free(line);
 		line = gnl(fd);
 	}
-	close(fd);
-	return (-1);
+	return (close(fd), -1);
 }
 
 int	buffer_iterator(int fd, char *file)

@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/12/21 14:58:14 by qupollet         ###   ########.fr        #
+#    Updated: 2025/12/30 16:36:44 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC =	game/display_window.c \
 		parsing/parsing.c \
 		parsing/read_paths.c \
 		parsing/read_paths2.c \
+		parsing/utils2.c \
 		parsing/structs_init.c \
 		parsing/utils.c \
 		parsing/verif_utils.c \
