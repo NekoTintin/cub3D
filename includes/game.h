@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/20 15:46:12 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/02 18:09:30 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@
 # define RIGHT_CLICK 3
 
 // Player stats
-# define PLAYER_MOVE_SPEED 0.1
+# define PLAYER_MOVE_SPEED 0.06
 
 typedef struct s_wdata		t_wdata;
 typedef struct s_map		t_map;
+typedef struct s_movement	t_movement;
 
 // Pos -> player position
 // Dir -> player direction vector
@@ -58,7 +59,18 @@ typedef struct s_player
 	double			dir_y;
 	double			plane_x;
 	double			plane_y;
+	t_movement		*move;
 }					t_player;
+
+typedef struct s_movement
+{
+	int				forward;
+	int				backward;
+	int				left;
+	int				right;
+	int				cam_left;
+	int				cam_right;
+}				t_movement;
 
 // Base struct, to hold anywhere needed
 typedef struct s_game
@@ -90,8 +102,9 @@ int			close_window(t_game *game);
 int			game_start(t_game *game);
 
 // hooks.c
-int			key_hook(int keycode, t_game *game);
-int			player_move(int keycode, t_game *game);
+int			key_pressed(int code, t_game *game);
+int			key_released(int code, t_game *game);
+int			hook_loop(t_game *game);
 
 // load_textures.c
 t_textures	*create_tex_struct(void);

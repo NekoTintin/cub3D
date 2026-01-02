@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:22:49 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/20 15:54:32 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/02 18:01:17 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	close_window(t_game *game)
 {
+	ft_printf("Exiting the game...\n");
+	ft_printf("Goodbye!\n");
 	free_tgame(game);
 	exit(0);
 }

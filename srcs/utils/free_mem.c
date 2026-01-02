@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:19:03 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/21 14:57:24 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/02 17:52:14 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ void	free_tgame(t_game *game)
 	if (game->wdata)
 		free_wdata(game->wdata);
 	if (game->player)
+	{
+		free(game->player->move);
+		game->player->move = NULL;
 		free(game->player);
+	}
 	free(game);
 }
 

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/30 16:30:18 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/02 17:53:18 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			set_colors(t_map *map, char **colors, char type);
 // structs_init.c
 t_map		*init_tmap(void);
 t_game		*init_game(t_map *map);
-void		init_tplayer(t_player *player, t_map *map);
+int			init_tplayer(t_player *player, t_map *map);
 
 // utils.c and utils2.c
 int			get_map_start_line(char *file);

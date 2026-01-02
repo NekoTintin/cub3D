@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:36:23 by jmondela          #+#    #+#             */
-/*   Updated: 2025/12/30 15:44:53 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/02 18:26:05 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,29 @@ void render_ceiling_floor(t_game *game)
 	}
 }
 
+static void	print_images(t_game *game)
+{
+	int 		minimap_x;
+	int 		minimap_y;
+
+	minimap_x = MINIMAP_MARGIN;
+	minimap_y = WIN_HEIGHT - MINIMAP_HEIGHT - MINIMAP_MARGIN;
+	mlx_put_image_to_window(game->wdata->ptr, game->wdata->win,
+		game->camera->mlx_img, 0, 0);
+	mlx_put_image_to_window(game->wdata->ptr, game->wdata->win,
+		game->minimap->mlx_img, minimap_x, minimap_y);
+}
+
 void	render(t_game *game)
 {
+	if (game->camera)
+		free_timg(game->camera, game->wdata->ptr);
 	game->camera = init_new_image(game->wdata->ptr,
 			WIN_WIDTH, WIN_HEIGHT);
-	render_ceiling_floor(game);
 	if (!game->camera)
 		exit(0);
+	render_ceiling_floor(game);
 	render_raycast(game);
-	mlx_put_image_to_window(game->wdata->ptr, game->wdata->win,
-		game->camera->mlx_img,0,0);
 	update_mini_map(game);
+	print_images(game);
 }
