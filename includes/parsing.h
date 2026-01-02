@@ -6,15 +6,15 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/02 17:53:18 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/02 19:03:05 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-typedef struct s_game		t_game;
-typedef struct s_player		t_player;
+typedef struct s_game	t_game;
+typedef struct s_player	t_player;
 
 typedef struct s_map
 {
@@ -29,10 +29,9 @@ typedef struct s_map
 	char			*east;
 	int				floor[3];
 	int				ceiling[3];
-}				t_map;
+}					t_map;
 
-typedef int	(*t_map_action)(t_map *map,
-		char *cell, int x, int y);
+typedef int	(*t_map_action)(t_map *map, char *cell, int x, int y);
 
 // backtracking.c
 int			backtracking_start(t_map *map, int x, int y, char **visited);

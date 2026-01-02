@@ -6,16 +6,12 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 15:45:58 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/20 15:53:39 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/02 19:00:01 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
 # define RENDERING_H
-
-
-#include <stdio.h> // To remove later --- IGNORE ---
-
 
 # define TEXTURE_SIZE 128
 
