@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/30 16:14:00 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/02 17:42:40 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	is_map_valid(t_map *map)
 {
 	char		**copy;
-	char		dir;
 
 	if (map_iter(map, check_valid_char) == -1)
 		return (-1);
@@ -26,7 +25,6 @@ static int	is_map_valid(t_map *map)
 	copy = create_copy(map);
 	if (!copy)
 		return (-1);
-	dir = map->grid[map->start_y][map->start_x];
 	map->grid[map->start_y][map->start_x] = '0';
 	copy[map->start_y][map->start_x] = '0';
 	if (backtracking_start(map, map->start_x, map->start_y, copy) == -1)
@@ -36,7 +34,6 @@ static int	is_map_valid(t_map *map)
 		return (-1);
 	}
 	free_tab(copy);
-	map->grid[map->start_y][map->start_x] = dir;
 	return (0);
 }
 
