@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 17:42:48 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/15 16:49:05 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:17:59 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	check_valid_char(t_map *map, char *cell, int x, int y)
 	if (*cell != '0' && *cell != '1' && *cell != 'N' && *cell != 'S'
 		&& *cell != 'E' && *cell != 'W' && *cell != '.' && *cell != '\0')
 	{
-		ft_printf("Invalid character '%c' at (%d, %d)\n", *cell, x, y);
 		ft_print_error("Map contains invalid characters");
+		ft_printf("Invalid character '%c' at (%d, %d)\n", *cell, x, y);
 		return (-1);
 	}
 	return (0);

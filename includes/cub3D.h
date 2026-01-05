@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/20 15:46:31 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:37:48 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void		print_map(t_map *map);
 
 // random.c
 void		remove_newline(char *str);
+void		print_extension_error(char *file);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/02 17:42:40 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/05 20:37:13 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	is_cub_format(char *filename)
 		return (ft_print_error("Filename too short to be a .cub file"), 0);
 	ext = filename + size - 4;
 	if (ft_strncmp(ext, ".cub", 4) != 0)
-		return (ft_print_error("File is not a .cub file"), 0);
+		return (print_extension_error(filename), 0);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (ft_print_error("Failed to open file"), 0);
@@ -88,16 +88,16 @@ t_game	*ft_parsing(const char *file)
 	if (!is_cub_format((char *)file))
 		return (free_tmap(map), NULL);
 	if (get_map_size((char *)file, map) == -1)
-		return (free_tmap(map), NULL);
+		return (ft_print_error("Failed to get map size"), free_tmap(map), NULL);
 	if (allocate_map(map) == -1)
 		return (free_tmap(map), NULL);
 	if (read_map(map, (char *)file) == -1)
 		return (free_tmap(map), NULL);
-	if (is_map_valid(map) == -1)
-		return (free_tmap(map), NULL);
 	if (are_paths_valid(map, (char *)file) == -1)
 		return (free_tmap(map), NULL);
 	if (check_file_completed(map) == -1)
+		return (free_tmap(map), NULL);
+	if (is_map_valid(map) == -1)
 		return (free_tmap(map), NULL);
 	game = init_game(map);
 	if (!game)
