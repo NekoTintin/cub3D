@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 15:28:46 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/02 18:58:26 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:49:55 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	key_pressed(int code, t_game *game)
 		game->player->move->left = 1;
 	if (code == KEY_D)
 		game->player->move->right = 1;
-	if (code == KEY_LEFT) // To be implemented
-		;
+	if (code == KEY_LEFT)
+		game->player->move->cam_left = 1;
 	if (code == KEY_RIGHT)
-		;
+		game->player->move->cam_right = 1;
 	return (0);
 }
 
@@ -42,48 +42,70 @@ int	key_released(int code, t_game *game)
 		game->player->move->left = 0;
 	if (code == KEY_D)
 		game->player->move->right = 0;
-	if (code == KEY_LEFT) // To be implemented
-		;
+	if (code == KEY_LEFT)
+		game->player->move->cam_left = 0;
 	if (code == KEY_RIGHT)
-		;
+		game->player->move->cam_right = 0;
 	return (0);
 }
 
-static void	player_mouvement(t_game *game)
+static void	player_mouvement(t_game *game, double *move_x, double *move_y)
+{
+	if (game->player->move->forward)
+	{
+		*move_x += game->player->dir_x;
+		*move_y += game->player->dir_y;
+	}
+	if (game->player->move->backward)
+	{
+		*move_x -= game->player->dir_x;
+		*move_y -= game->player->dir_y;
+	}
+	if (game->player->move->right)
+	{
+		*move_x += game->player->plane_x;
+		*move_y += game->player->plane_y;
+	}
+	if (game->player->move->left)
+	{
+		*move_x -= game->player->plane_x;
+		*move_y -= game->player->plane_y;
+	}
+	game->player->pos_x += *move_x * PLAYER_MOVE_SPEED;
+	game->player->pos_y += *move_y * PLAYER_MOVE_SPEED;
+}
+
+static void	player_camera(t_game *game)
+{
+	double	rot_speed;
+	double	old_dir_x;
+	double	old_plane_x;
+
+	if (!game->player->move->cam_left && !game->player->move->cam_right)
+		return ;
+	rot_speed = PLAYER_ROT_SPEED;
+	if (game->player->move->cam_left)
+		rot_speed = -rot_speed;
+	old_dir_x = game->player->dir_x;
+	game->player->dir_x = game->player->dir_x * cos(rot_speed)
+		- game->player->dir_y * sin(rot_speed);
+	game->player->dir_y = old_dir_x * sin(rot_speed)
+		+ game->player->dir_y * cos(rot_speed);
+	old_plane_x = game->player->plane_x;
+	game->player->plane_x = game->player->plane_x * cos(rot_speed)
+		- game->player->plane_y * sin(rot_speed);
+	game->player->plane_y = old_plane_x * sin(rot_speed)
+		+ game->player->plane_y * cos(rot_speed);
+}
+
+int	hook_loop(t_game *game)
 {
 	double	move_x;
 	double	move_y;
 
 	move_x = 0;
 	move_y = 0;
-	if (game->player->move->forward)
-		move_y -= 1;
-	if (game->player->move->backward)
-		move_y += 1;
-	if (game->player->move->left)
-		move_x -= 1;
-	if (game->player->move->right)
-		move_x += 1;
-	if (move_x != 0 && move_y != 0)
-	{
-		move_x *= sqrt(2) / 2;
-		move_y *= sqrt(2) / 2;
-	}
-	game->player->pos_x += move_x * PLAYER_MOVE_SPEED;
-	game->player->pos_y += move_y * PLAYER_MOVE_SPEED;
-}
-
-static void	player_camera(t_game *game)
-{
-	if (game->player->move->cam_left) // To be implemented
-		;
-	if (game->player->move->cam_right)
-		;
-}
-
-int	hook_loop(t_game *game)
-{
-	player_mouvement(game);
+	player_mouvement(game, &move_x, &move_y);
 	player_camera(game);
 	render(game);
 	return (0);

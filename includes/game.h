@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/02 18:09:30 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/05 19:08:57 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 
 // Player stats
 # define PLAYER_MOVE_SPEED 0.06
+# define PLAYER_ROT_SPEED 0.05
 
 typedef struct s_wdata		t_wdata;
 typedef struct s_map		t_map;
