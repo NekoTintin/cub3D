@@ -6,7 +6,7 @@
 #    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2025/12/30 16:36:44 by qupollet         ###   ########.fr        #
+#    Updated: 2026/01/11 20:25:14 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ DEBUG = -g3
 SRC =	game/display_window.c \
 		game/game.c \
 		game/hooks.c \
+		game/hook_utils.c \
 		images/free_imgs.c \
 		images/images_func.c \
 		images/images_init.c \

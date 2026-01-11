@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:31:12 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/05 19:08:57 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/11 20:24:27 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,8 @@ int			hook_loop(t_game *game);
 // load_textures.c
 t_textures	*create_tex_struct(void);
 int			load_textures(t_game *game);
+
+// hook_utils.c
+void		apply_player_mouvement(t_game *game, double move_x, double move_y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:16:21 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/18 19:01:32 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/11 20:17:41 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ void	ft_print_error(char *msg)
 	ft_putstr_fd("\n", 2);
 }
 
+void	ft_print_message(char *msg)
+{
+	ft_putstr_fd(GREEN, 1);
+	ft_putstr_fd(msg, 1);
+	ft_putstr_fd(END, 1);
+	ft_putstr_fd("\n", 1);
+}
+
+// Only for debug
 void	print_tab(char **tab)
 {
 	int		idx;

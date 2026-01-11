@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 15:28:46 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/05 19:49:55 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/11 20:24:05 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	key_released(int code, t_game *game)
 
 static void	player_mouvement(t_game *game, double *move_x, double *move_y)
 {
+	double	normialized;
+
 	if (game->player->move->forward)
 	{
 		*move_x += game->player->dir_x;
@@ -71,8 +73,7 @@ static void	player_mouvement(t_game *game, double *move_x, double *move_y)
 		*move_x -= game->player->plane_x;
 		*move_y -= game->player->plane_y;
 	}
-	game->player->pos_x += *move_x * PLAYER_MOVE_SPEED;
-	game->player->pos_y += *move_y * PLAYER_MOVE_SPEED;
+	apply_player_mouvement(game, *move_x, *move_y);
 }
 
 static void	player_camera(t_game *game)

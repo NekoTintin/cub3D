@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/05 20:37:48 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/11 20:14:37 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void		free_textures(t_textures *textures, void *ptr);
 // printing.c
 void		ft_print_warning(char *msg);
 void		ft_print_error(char *msg);
+void		ft_print_message(char *msg);
 void		print_tab(char **tab);
 void		print_map(t_map *map);
 
