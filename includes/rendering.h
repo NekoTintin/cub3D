@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 15:45:58 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/02 19:00:01 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/11 04:27:36 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define RENDERING_H
 
 # define TEXTURE_SIZE 128
+
+// Textures direction indexes
+# define NORTH 0
+# define SOUTH 1
+# define WEST 2
+# define EAST 3
 
 # include "cub3D.h"
 

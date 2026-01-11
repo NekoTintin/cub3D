@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:19:03 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/02 17:52:14 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/09 02:20:20 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	free_tab(char **tablo)
 {
 	int		idx;
 
+	if (!tablo)
+		return ;
 	idx = 0;
 	while (tablo[idx])
 	{
