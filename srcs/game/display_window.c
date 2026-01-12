@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:22:49 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/11 20:15:27 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/12 17:40:09 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	display_window(t_game *game)
 	game->wdata->ptr = mlx_init();
 	if (!game->wdata->ptr)
 		return (ft_print_error("Failed to initialize MLX"), -1);
+	if (load_textures(game) == -1)
+		return (-1);
 	game->wdata->win = mlx_new_window(game->wdata->ptr, WIN_WIDTH,
 			WIN_HEIGHT, "cub3D");
 	if (!game->wdata->win)
