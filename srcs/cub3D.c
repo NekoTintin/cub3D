@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:04 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/31 18:08:50 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:37:54 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	game = ft_parsing(argv[1]);
 	if (!game)
 		return (1);
+	set_start_dir(game);
 	game_start(game);
 	free_tgame(game);
 	return (0);

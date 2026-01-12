@@ -6,11 +6,52 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 16:00:56 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/30 16:29:14 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:39:27 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+static void	set_start_dir2(t_game *game, char dir)
+{
+	if (dir == 'E')
+	{
+		game->player->dir_x = 1;
+		game->player->dir_y = 0;
+		game->player->plane_x = 0;
+		game->player->plane_y = 0.66;
+	}
+	else if (dir == 'W')
+	{
+		game->player->dir_x = -1;
+		game->player->dir_y = 0;
+		game->player->plane_x = 0;
+		game->player->plane_y = -0.66;
+	}
+}
+
+void	set_start_dir(t_game *game)
+{
+	char		dir;
+
+	dir = game->player->start_dir;
+	if (dir == 'N')
+	{
+		game->player->dir_x = 0;
+		game->player->dir_y = -1;
+		game->player->plane_x = 0.66;
+		game->player->plane_y = 0;
+	}
+	else if (dir == 'S')
+	{
+		game->player->dir_x = 0;
+		game->player->dir_y = 1;
+		game->player->plane_x = -0.66;
+		game->player->plane_y = 0;
+	}
+	else
+		set_start_dir2(game, dir);
+}
 
 int	is_map_line(char *line)
 {

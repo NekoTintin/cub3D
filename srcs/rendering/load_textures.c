@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 13:43:01 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/20 16:00:46 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/12 17:22:41 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static int	check_texture_loaded(t_game *game)
 		|| !game->wdata->textures->east_tex)
 	{
 		ft_print_error("At least one texture failed to load.");
-		free_textures(game->wdata->textures, game->wdata->ptr);
 		return (-1);
 	}
 	return (0);

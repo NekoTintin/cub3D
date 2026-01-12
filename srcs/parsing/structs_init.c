@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:11:27 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/02 17:50:59 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:48:31 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_game	*init_game(t_map *map)
 		return (free(game), NULL);
 	if (init_tplayer(game->player, map) == -1)
 		return (free(game->player), free(game), NULL);
+	game->map->grid[map->start_y][map->start_x] = '0';
 	return (game);
 }
 
@@ -65,8 +66,9 @@ int	init_tplayer(t_player *player, t_map *map)
 	player->pos_x = map->start_x;
 	player->pos_y = map->start_y;
 	player->dir_x = 0;
-	player->dir_y = -1;
-	player->plane_x = 0.66;
+	player->dir_y = 0;
+	player->plane_x = 0;
 	player->plane_y = 0;
+	player->start_dir = map->grid[map->start_y][map->start_x];
 	return (0);
 }
