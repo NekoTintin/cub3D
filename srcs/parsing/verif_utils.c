@@ -101,16 +101,16 @@ int	is_player_outside(t_map *map)
 	if (px < 0 || py < 0 || px >= map->width || py >= map->height)
 		return (-1);
 	if (py - 1 < 0 || (map->grid[py - 1][px] != '0'
-			&& map->grid[py - 1][px] != '1'))
+		&& map->grid[py - 1][px] != '1'))
 		return (-1);
 	if (py + 1 >= map->height || (map->grid[py + 1][px] != '0'
-			&& map->grid[py + 1][px] != '1'))
+		&& map->grid[py + 1][px] != '1'))
 		return (-1);
 	if (px - 1 < 0 || (map->grid[py][px - 1] != '0'
-			&& map->grid[py][px - 1] != '1'))
+		&& map->grid[py][px - 1] != '1'))
 		return (-1);
 	if (px + 1 >= map->width || (map->grid[py][px + 1] != '0'
-			&& map->grid[py][px + 1] != '1'))
+		&& map->grid[py][px + 1] != '1'))
 		return (-1);
 	return (0);
 }
