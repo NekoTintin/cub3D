@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/14 19:21:04 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/14 22:01:12 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	buffer_iterator(int fd, char *file)
 		return (ft_print_error("Failed to open file"), -1);
 	line_num = get_map_start_line(file, fd2);
 	close(fd2);
+	gnl(-1);
 	if (line_num == -1)
 		return (ft_print_error("Failed to get map start line"), -1);
 	while (idx < line_num)
@@ -97,7 +98,7 @@ int	get_map_size(char *file, t_map *map)
 	if (fd == -1)
 		return (ft_print_error("Failed to open file"), -1);
 	if (buffer_iterator(fd, file) == -1)
-		return (close(fd), -1);
+		return (close(fd), gnl(-1), -1);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -110,7 +111,7 @@ int	get_map_size(char *file, t_map *map)
 	close(fd);
 	map->width = width;
 	map->height = height;
-	return (0);
+	return (gnl(-1), 0);
 }
 
 int	allocate_map(t_map *map)
