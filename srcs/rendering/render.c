@@ -3,34 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:36:23 by jmondela          #+#    #+#             */
-/*   Updated: 2026/01/02 18:26:05 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:18:13 by jmondela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 #include <stdio.h>
-
-// void	init_texture_pixels(t_game *game)
-// {
-// 	int	i;
-
-// 	game->texture_pixels = ft_calloc(game->wdata->win_height + 1,
-// 			sizeof * game->texture_pixels);
-// 	if (!game->texture_pixels)
-// 		exit(0);
-// 	i = 0;
-// 	while (i < game->wdata->win_height)
-// 	{
-// 		game->texture_pixels[i] = ft_calloc(game->wdata->win_width + 1,
-// 				sizeof * game->texture_pixels);
-// 		if (!game->texture_pixels[i])
-// 			exit(0);
-// 		i++;
-// 	}
-// }
 
 void	init_ray(t_ray *ray)
 {
@@ -53,13 +34,13 @@ void	init_ray(t_ray *ray)
 	ray->draw_end = 0;
 }
 
-static void	render_raycast(t_game *game)
+void	render_raycast(t_game *game)
 {
 	init_ray(&game->ray);
 	raycasting(game->player, game);
 }
 
-void render_ceiling_floor(t_game *game)
+void	render_ceiling_floor(t_game *game)
 {
 	int		x;
 	int		y;
@@ -70,7 +51,7 @@ void render_ceiling_floor(t_game *game)
 		x = 0;
 		while (x < WIN_WIDTH)
 		{
-			if (y > WIN_HEIGHT/2)
+			if (y > WIN_HEIGHT / 2)
 				put_pixel_to_img(game->camera, x, y,
 					game->wdata->textures->floor_color[0] << 16
 					| game->wdata->textures->floor_color[1] << 8
@@ -88,8 +69,8 @@ void render_ceiling_floor(t_game *game)
 
 static void	print_images(t_game *game)
 {
-	int 		minimap_x;
-	int 		minimap_y;
+	int	minimap_x;
+	int	minimap_y;
 
 	minimap_x = MINIMAP_MARGIN;
 	minimap_y = WIN_HEIGHT - MINIMAP_HEIGHT - MINIMAP_MARGIN;
