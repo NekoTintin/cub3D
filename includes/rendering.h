@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 15:45:58 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/11 04:27:36 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:35:47 by jmondela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ typedef struct s_textures
 	int			ceiling_color[3];
 	int			floor_color[3];
 }				t_textures;
+
+void		setup_dda(t_ray *ray, t_player *player);
+void		perform_dda(t_game *game, t_ray *ray);
 
 void		render(t_game *game);
 void		init_ray(t_ray *ray);

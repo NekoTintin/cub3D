@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
+#    By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2026/01/12 16:20:38 by qupollet         ###   ########.fr        #
+#    Updated: 2026/01/14 14:29:00 by jmondela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRC =	game/display_window.c \
 		rendering/raycasting.c \
 		rendering/render.c \
 		rendering/drawing.c \
+		rendering/dda.c \
 		utils/free_mem.c \
 		utils/printing.c \
 		utils/random_func.c \
