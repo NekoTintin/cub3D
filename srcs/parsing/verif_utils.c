@@ -92,28 +92,25 @@ int	map_iter(t_map *map, t_map_action act)
 
 int	is_player_outside(t_map *map)
 {
-	int	x;
-	int	y;
 	int	px;
 	int	py;
 
 	px = map->start_x;
 	py = map->start_y;
-	y = py - 1;
-	while (y <= py + 1)
-	{
-		x = px - 1;
-		while (x <= px + 1)
-		{
-			if (x < 0 || y < 0 || x >= map->width || y >= map->height)
-				return (-1);
-			if (map->grid[y][x] != '0' && map->grid[y][x] != '1'
-				&& map->grid[y][x] != 'N' && map->grid[y][x] != 'S'
-				&& map->grid[y][x] != 'E' && map->grid[y][x] != 'W')
-				return (-1);
-			x++;
-		}
-		y++;
-	}
+
+	if (px < 0 || py < 0 || px >= map->width || py >= map->height)
+		return (-1);
+	if (py - 1 < 0 || (map->grid[py - 1][px] != '0'
+			&& map->grid[py - 1][px] != '1'))
+		return (-1);
+	if (py + 1 >= map->height || (map->grid[py + 1][px] != '0'
+			&& map->grid[py + 1][px] != '1'))
+		return (-1);
+	if (px - 1 < 0 || (map->grid[py][px - 1] != '0'
+			&& map->grid[py][px - 1] != '1'))
+		return (-1);
+	if (px + 1 >= map->width || (map->grid[py][px + 1] != '0'
+			&& map->grid[py][px + 1] != '1'))
+		return (-1);
 	return (0);
 }
