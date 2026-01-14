@@ -97,7 +97,6 @@ int	is_player_outside(t_map *map)
 
 	px = map->start_x;
 	py = map->start_y;
-
 	if (px < 0 || py < 0 || px >= map->width || py >= map->height)
 		return (-1);
 	if (py - 1 < 0 || (map->grid[py - 1][px] != '0'
