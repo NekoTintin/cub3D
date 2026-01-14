@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 23:53:33 by qupollet          #+#    #+#             */
-/*   Updated: 2025/12/30 16:28:47 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 00:32:12 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,25 @@ static int	is_valid_color(char *color_str)
 {
 	int		color;
 	int		i;
+	char	*trimmed;
 
 	if (!color_str || !*color_str)
 		return (0);
+	trimmed = color_str;
+	while (*trimmed == ' ' || *trimmed == '\t')
+		trimmed++;
+	if (*trimmed == '\0')
+		return (0);
 	i = 0;
-	while (color_str[i])
-	{
-		if (!ft_isdigit(color_str[i]))
-			return (0);
+	if (valid_colors_loop(&i, trimmed) == 0)
+		return (0);
+	if (i == 0)
+		return (0);
+	while (trimmed[i] == ' ' || trimmed[i] == '\t')
 		i++;
-	}
-	color = ft_atoi(color_str);
+	if (trimmed[i] != '\0')
+		return (0);
+	color = ft_atoi(trimmed);
 	if (color < 0 || color > 255)
 		return (0);
 	return (1);
@@ -78,11 +86,15 @@ static int	assign_colors(t_map *map, char *line)
 static int	assign_textures(t_map *map, char *line)
 {
 	char		**path;
+	int			count;
 
 	path = ft_split(line, ' ');
-	if (!path || !path[0] || !path[1] || path[2])
+	if (!path)
+		return (ft_print_error("Invalid texture line"), -1);
+	count = count_valid_tokens(path);
+	if (count != 2)
 		return (free_tab(path), ft_print_error("Invalid texture line"), -1);
-	if (check_if_path_is_valid(path[1]) == -1)
+	if (check_if_path_is_valid(get_valid_token(path, 1)) == -1)
 		return (free_tab(path), -1);
 	if (allocate_textures(map, path) == -1)
 		return (free_tab(path), -1);

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/14 19:03:36 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 00:32:18 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ t_game			*ft_parsing(const char *file);
 int				are_paths_valid(t_map *map, char *file);
 int				allocate_textures(t_map *map, char **splited);
 int				set_colors(t_map *map, char **colors, char type);
+int				count_valid_tokens(char **arr);
+char			*get_valid_token(char **arr, int token_num);
+int				valid_colors_loop(int *i, char *trimmed);
 
 // structs_init.c
 t_map			*init_tmap(void);

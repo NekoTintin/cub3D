@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 15:45:58 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/14 16:35:47 by jmondela         ###   ########.fr       */
+/*   Updated: 2026/01/14 23:36:18 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
 # define RENDERING_H
 
-# define TEXTURE_SIZE 128
+# define TEXTURE_SIZE 64
 
 // Textures direction indexes
 # define NORTH 0
