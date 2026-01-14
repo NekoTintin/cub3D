@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 17:42:48 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/05 20:17:59 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:28:02 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,34 @@ int	map_iter(t_map *map, t_map_action act)
 			res = act(map, &map->grid[y][x], x, y);
 			if (res != 0)
 				return (res);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+int	is_player_outside(t_map *map)
+{
+	int	x;
+	int	y;
+	int	px;
+	int	py;
+
+	px = map->start_x;
+	py = map->start_y;
+	y = py - 1;
+	while (y <= py + 1)
+	{
+		x = px - 1;
+		while (x <= px + 1)
+		{
+			if (x < 0 || y < 0 || x >= map->width || y >= map->height)
+				return (-1);
+			if (map->grid[y][x] != '0' && map->grid[y][x] != '1'
+				&& map->grid[y][x] != 'N' && map->grid[y][x] != 'S'
+				&& map->grid[y][x] != 'E' && map->grid[y][x] != 'W')
+				return (-1);
 			x++;
 		}
 		y++;

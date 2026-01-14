@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 21:51:04 by qupollet          #+#    #+#             */
-/*   Updated: 2025/10/18 17:56:56 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:27:50 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ char	**create_copy(t_map *map)
 	return (copy);
 }
 
-// TO REDO
 int	backtracking(t_map *map, int x, int y, char **visited)
 {
 	if (x < 0 || y < 0 || x >= map->width || y >= map->height)

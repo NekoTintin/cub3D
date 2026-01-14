@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/12 16:36:36 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:28:23 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int				is_start_pos(t_map *map, char *cell, int x, int y);
 int				check_valid_char(t_map *map, char *cell, int x, int y);
 int				count_start_char(t_map *map);
 int				map_iter(t_map *map, t_map_action action);
+int				is_player_outside(t_map *map);
 
 #endif

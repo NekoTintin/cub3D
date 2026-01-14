@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/12 16:44:46 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:32:57 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static int	is_map_valid(t_map *map)
 		return (-1);
 	if (map_iter(map, is_start_pos) == -1)
 		return (-1);
+	if (is_player_outside(map) == -1)
+		return (ft_print_error("Player is outside the map"), -1);
 	copy = create_copy(map);
 	if (!copy)
 		return (-1);
@@ -32,8 +34,7 @@ static int	is_map_valid(t_map *map)
 	if (backtracking_start(map, map->start_x, map->start_y, copy) == -1)
 	{
 		ft_print_error("Map is not closed");
-		free_tab(copy);
-		return (-1);
+		return (free_tab(copy), -1);
 	}
 	free_tab(copy);
 	map->grid[map->start_y][map->start_x] = bck_dir;
