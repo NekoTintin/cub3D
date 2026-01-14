@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:11:27 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/12 16:48:31 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/14 19:14:25 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	init_tplayer(t_player *player, t_map *map)
 	player->move = ft_calloc(1, sizeof(t_movement));
 	if (!player->move)
 		return (-1);
-	player->pos_x = map->start_x;
-	player->pos_y = map->start_y;
+	player->pos_x = map->start_x + 0.5;
+	player->pos_y = map->start_y + 0.5;
 	player->dir_x = 0;
 	player->dir_y = 0;
 	player->plane_x = 0;

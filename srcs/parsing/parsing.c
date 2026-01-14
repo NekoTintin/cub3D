@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:36:58 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/14 16:32:57 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/14 19:05:51 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_game	*ft_parsing(const char *file)
 	if (!is_cub_format((char *)file))
 		return (free_tmap(map), NULL);
 	if (get_map_size((char *)file, map) == -1)
-		return (ft_print_error("Failed to get map size"), free_tmap(map), NULL);
+		return (free_tmap(map), NULL);
 	if (allocate_map(map) == -1)
 		return (free_tmap(map), NULL);
 	if (read_map(map, (char *)file) == -1)

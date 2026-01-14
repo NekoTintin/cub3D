@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/05 20:33:33 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/14 19:21:04 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static int	process_line(char *line, int *map_started)
 	if (is_map_line(line) == 1)
 	{
 		if (!*map_started)
-			return (1);
-		*map_started = 1;
+			*map_started = 1;
+		return (1);
 	}
 	else if (*map_started && (line[0] == '\0' || line[0] == '\n'))
 		return (ft_print_error("Empty line in map"), -1);
@@ -30,45 +30,48 @@ static int	process_line(char *line, int *map_started)
 
 // Map are stored at the end of the file
 // this function is needed to get the map
-int	get_map_start_line(char *file)
+int	get_map_start_line(char *file, int fd)
 {
-	int		fd;
 	char	*line;
 	int		line_counter;
 	int		map_started;
+	int		start_line;
 	int		result;
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (-1);
-	line_counter = 0;
-	map_started = 0;
+	get_start_line_init(&line_counter, &map_started, &start_line);
 	line = gnl(fd);
 	while (line)
 	{
 		remove_newline(line);
 		result = process_line(line, &map_started);
-		if (result == 1)
-			return (free(line), close(fd), line_counter);
+		if (result == 1 && start_line == -1)
+			start_line = line_counter;
 		if (result == -1)
-			return (free(line), close(fd), -1);
+			return (free(line), -1);
 		line_counter++;
 		free(line);
 		line = gnl(fd);
 	}
-	return (close(fd), -1);
+	if (start_line != -1)
+		return (start_line);
+	return (-1);
 }
 
 int	buffer_iterator(int fd, char *file)
 {
+	int		fd2;
 	char	*buf;
 	int		idx;
 	int		line_num;
 
 	idx = 0;
-	line_num = get_map_start_line(file);
+	fd2 = open(file, O_RDONLY);
+	if (fd2 == -1)
+		return (ft_print_error("Failed to open file"), -1);
+	line_num = get_map_start_line(file, fd2);
+	close(fd2);
 	if (line_num == -1)
-		return (-1);
+		return (ft_print_error("Failed to get map start line"), -1);
 	while (idx < line_num)
 	{
 		buf = gnl(fd);
@@ -92,7 +95,7 @@ int	get_map_size(char *file, t_map *map)
 	height = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (-1);
+		return (ft_print_error("Failed to open file"), -1);
 	if (buffer_iterator(fd, file) == -1)
 		return (close(fd), -1);
 	line = get_next_line(fd);
