@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/15 00:32:18 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 01:03:19 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int				set_colors(t_map *map, char **colors, char type);
 int				count_valid_tokens(char **arr);
 char			*get_valid_token(char **arr, int token_num);
 int				valid_colors_loop(int *i, char *trimmed);
+int				check_comma_errors(char *line);
 
 // structs_init.c
 t_map			*init_tmap(void);

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 23:53:33 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/15 00:32:12 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 01:04:59 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,23 @@ static int	check_if_path_is_valid(char *path)
 	return (0);
 }
 
+
+
 static int	assign_colors(t_map *map, char *line)
 {
 	char		**colors;
 	char		type;
+	int			count;
 
 	type = line[0];
 	if ((type == 'F' && map->floor[0] != -1)
 		|| (type == 'C' && map->ceiling[0] != -1))
 		return (ft_print_error("Duplicate color definition"), -1);
+	if (check_comma_errors(line + 2) == -1)
+		return (ft_print_error("Invalid comma placement"), -1);
 	colors = ft_split(line + 2, ',');
-	if (!colors || !colors[0] || !colors[1] || !colors[2] || colors[3])
-		return (free_tab(colors), ft_print_error("Invalid color line"), -1);
+	if (!colors)
+		return (ft_print_error("Invalid color line"), -1);
 	if (is_valid_color(colors[0]) == 0 || is_valid_color(colors[1]) == 0
 		|| is_valid_color(colors[2]) == 0)
 		return (free_tab(colors), ft_print_error("Color are not valid"), -1);

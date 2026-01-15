@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:14:08 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/15 00:33:16 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 01:04:45 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,22 @@ int	valid_colors_loop(int *i, char *trimmed)
 		(*i)++;
 	}
 	return (1);
+}
+
+int	check_comma_errors(char *line)
+{
+	int		i;
+	int		num;
+
+	i = 0;
+	num = 0;
+	while (line[i])
+	{
+		if (line[i] == ',')
+			num++;
+		i++;
+	}
+	if (num != 2)
+		return (-1);
+	return (0);
 }
