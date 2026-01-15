@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 13:43:01 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/12 17:22:41 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:40:47 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,19 @@ int	load_textures(t_game *game)
 	get_colours_from_parsing(game);
 	game->wdata->textures->north_tex = load_from_xpm(
 			game->map->north, game->wdata->ptr, &w, &h);
+	if (w != TEXTURE_SIZE || h != TEXTURE_SIZE)
+		return (ft_print_error("North texture has an invalid size"), -1);
 	game->wdata->textures->south_tex = load_from_xpm(
 			game->map->south, game->wdata->ptr, &w, &h);
+	if (w != TEXTURE_SIZE || h != TEXTURE_SIZE)
+		return (ft_print_error("South texture has an invalid size"), -1);
 	game->wdata->textures->west_tex = load_from_xpm(
 			game->map->west, game->wdata->ptr, &w, &h);
+	if (w != TEXTURE_SIZE || h != TEXTURE_SIZE)
+		return (ft_print_error("West texture has an invalid size"), -1);
 	game->wdata->textures->east_tex = load_from_xpm(
 			game->map->east, game->wdata->ptr, &w, &h);
+	if (w != TEXTURE_SIZE || h != TEXTURE_SIZE)
+		return (ft_print_error("East texture has an invalid size"), -1);
 	return (check_texture_loaded(game));
 }

@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 16:00:56 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/14 18:49:43 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:13:12 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ int	set_colors(t_map *map, char **colors, char type)
 	return (0);
 }
 
-int	get_start_line_init(int *line_counter, int *map_started, int *start_line)
+void	get_start_line_init(int *line_counter,
+		int *map_started, int *start_line)
 {
 	*line_counter = 0;
 	*map_started = 0;

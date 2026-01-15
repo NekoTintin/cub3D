@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:04 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/12 16:37:54 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:31:02 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_print_warning("Usage: ./cub3D <map_file>");
+		ft_print_error("Usage: ./cub3D <map_file>");
 		return (1);
 	}
 	game = ft_parsing(argv[1]);

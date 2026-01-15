@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/15 01:42:37 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:14:03 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	process_line(char *line, int *map_started)
 
 // Map are stored at the end of the file
 // this function is needed to get the map
-int	get_map_start_line(char *file, int fd)
+int	get_map_start_line(int fd)
 {
 	char	*line;
 	int		line_counter;
@@ -64,7 +64,7 @@ int	buffer_iterator(int fd, char *file)
 	fd2 = open(file, O_RDONLY);
 	if (fd2 == -1)
 		return (ft_print_error("Failed to open file"), -1);
-	line_num = get_map_start_line(file, fd2);
+	line_num = get_map_start_line(fd2);
 	close(fd2);
 	gnl(-1);
 	if (line_num == -1)

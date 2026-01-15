@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:38:56 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/15 01:03:19 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:14:13 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ t_game			*init_game(t_map *map);
 int				init_tplayer(t_player *player, t_map *map);
 
 // utils.c and utils2.c
-int				get_map_start_line(char *file, int fd);
+int				get_map_start_line(int fd);
 int				buffer_iterator(int fd, char *file);
 int				get_map_size(char *file, t_map *map);
 int				allocate_map(t_map *map);
 void			set_start_dir(t_game *game);
 int				is_map_line(char *line);
-int				get_start_line_init(int *line_counter,
+void			get_start_line_init(int *line_counter,
 					int *map_started, int *start_line);
 
 // verifs_utils.c

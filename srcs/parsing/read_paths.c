@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 23:53:33 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/15 01:07:54 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:12:21 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static int	assign_colors(t_map *map, char *line)
 {
 	char		**colors;
 	char		type;
-	int			count;
 
 	type = line[0];
 	if ((type == 'F' && map->floor[0] != -1)

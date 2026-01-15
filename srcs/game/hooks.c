@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 15:28:46 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/11 20:24:05 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:11:10 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int	key_released(int code, t_game *game)
 
 static void	player_mouvement(t_game *game, double *move_x, double *move_y)
 {
-	double	normialized;
-
 	if (game->player->move->forward)
 	{
 		*move_x += game->player->dir_x;

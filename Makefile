@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+         #
+#    By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/02 18:40:37 by qupollet          #+#    #+#              #
-#    Updated: 2026/01/14 14:29:00 by jmondela         ###   ########.fr        #
+#    Updated: 2026/01/15 11:14:58 by qupollet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ SRCS = ${addprefix ${SRC_DIR}/, ${SRC}}
 OBJECTS = ${addprefix ${OBJ_DIR}/, ${SRC:.c=.o}}
 
 CC = @cc
-CFLAGS = ${DEBUG}
+CFLAGS = -Wall -Wextra -Werror ${DEBUG}
 
 # Colours
 RED = \033[0;91m
@@ -76,7 +76,7 @@ all: ${NAME}
 	@echo "${GREEN}✅ Executable compiled !"
 
 # Compilation de l'exécutable
-${NAME}: ${LIBFT} ${MLX} ${OBJECTS}
+${NAME}: libft mlx ${OBJECTS}
 	${CC} ${CFLAGS} ${OBJECTS} -o ${NAME} ${LIBFT} ${MLX_FLAGS}
 
 # Règle pour compiler les fichiers objets dans le dossier objs
@@ -96,12 +96,12 @@ ${OBJ_DIR}:
 	@mkdir -p ${OBJ_DIR}/rendering
 
 # Règle pour la compilation de la libft
-${LIBFT}:
+libft:
 	@echo "${YELLOW}📦 Compiling libft...${NC}"
 	@make -C ${LIBFT_DIR}
 
 # Règle pour la compilation de minilibx
-${MLX}:
+mlx:
 	@echo "${YELLOW}📦 Compiling minilibx...${NC}"
 	@make -C ${MLX_DIR}
 
@@ -118,10 +118,10 @@ clean:
 fclean: clean
 	@echo "${RED}🧹 Cleaning executable and objects...${NC}"
 	@rm -f ${NAME}
-	@rm -f ${LIBFT}
-	@rm -f ${MLX}
+	@make fclean -C ${LIBFT_DIR}
+	@make clean -C ${MLX_DIR}
 
 # Rebuild complet
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft mlx

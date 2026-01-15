@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 18:33:32 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/02 18:17:02 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:12:01 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ static int	draw_border(t_img *img)
 
 int	update_mini_map(t_game *game)
 {
-	int			map_pos_x;
-	int			map_pos_y;
-
 	if (game->minimap)
 		free_timg(game->minimap, game->wdata->ptr);
 	game->minimap = init_new_image(game->wdata->ptr,
