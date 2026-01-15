@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 23:53:33 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/15 01:04:59 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 01:07:54 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ static int	check_if_path_is_valid(char *path)
 	close(fd);
 	return (0);
 }
-
-
 
 static int	assign_colors(t_map *map, char *line)
 {
