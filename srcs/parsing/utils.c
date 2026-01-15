@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/14 23:57:19 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 01:42:37 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ static int	process_line(char *line, int *map_started)
 			*map_started = 1;
 		return (1);
 	}
-	else if (*map_started && (line[0] == '\0' || line[0] == '\n'))
-		return (ft_print_error("Empty line in map"), -1);
-	else if (*map_started)
-		return (ft_print_error("Non-map content after map"), -1);
 	return (0);
 }
 
