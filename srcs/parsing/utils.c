@@ -6,7 +6,7 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 21:35:20 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/15 11:14:03 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 12:02:58 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	allocate_map(t_map *map)
 	{
 		map->grid[idx] = ft_calloc(map->width + 1, sizeof(char));
 		if (!map->grid[idx])
-			return (free_tab(map->grid), -1);
+			return (-1);
 		idx++;
 	}
 	return (0);

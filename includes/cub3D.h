@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmondela <jmondela@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:38:19 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/14 14:28:38 by jmondela         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:50:40 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 // utils.c
 // free_mem.c
-void		free_tab(char **tablo);
+void		free_tab(char **table);
 void		free_tgame(t_game *game);
 void		free_tmap(t_map *map);
 void		free_wdata(t_wdata *data);

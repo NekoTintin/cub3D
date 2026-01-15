@@ -6,25 +6,25 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:19:03 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/09 02:20:20 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 12:02:57 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	free_tab(char **tablo)
+void	free_tab(char **table)
 {
 	int		idx;
 
-	if (!tablo)
+	if (!table)
 		return ;
 	idx = 0;
-	while (tablo[idx])
+	while (table[idx])
 	{
-		free(tablo[idx]);
+		free(table[idx]);
 		idx++;
 	}
-	free(tablo);
+	free(table);
 }
 
 void	free_tgame(t_game *game)
