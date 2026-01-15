@@ -6,14 +6,14 @@
 /*   By: qupollet <qupollet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 15:45:58 by qupollet          #+#    #+#             */
-/*   Updated: 2026/01/14 23:36:18 by qupollet         ###   ########.fr       */
+/*   Updated: 2026/01/15 02:09:11 by qupollet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
 # define RENDERING_H
 
-# define TEXTURE_SIZE 64
+# define TEXTURE_SIZE 128
 
 // Textures direction indexes
 # define NORTH 0
